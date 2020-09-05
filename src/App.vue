@@ -11,9 +11,22 @@
           </h2>
         </div>
       </div>
+      <div class="hero-foot">
+        <chevron-down-icon size="2x"></chevron-down-icon>
+      </div>
     </section>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from "vue";
+import { ChevronDownIcon } from "vue-feather-icons";
+export default Vue.extend({
+  components: {
+    ChevronDownIcon
+  }
+});
+</script>
 
 <style lang="scss">
 #app {

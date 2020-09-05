@@ -8,9 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@types/vue-feather-icons": "^5.0.0",
     "bulma": "^0.9.0",
+    "feather-icons": "^4.28.0",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
+    "vue-feather-icons": "^5.1.0",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.2.0"
   },
