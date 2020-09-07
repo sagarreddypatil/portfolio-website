@@ -3,16 +3,18 @@
     <section class="hero is-success is-fullheight welcome">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">
+          <div class="title">
             Hi There!
-          </h1>
-          <h2 class="subtitle">
+          </div>
+          <div class="subtitle">
             My name is Sagar Patil
-          </h2>
+          </div>
         </div>
       </div>
-      <div class="hero-foot">
-        <chevron-down-icon size="2x"></chevron-down-icon>
+      <div id="down-arrow">
+        <a href="#" id="chevron-down-button"
+          ><chevron-down-icon size="2x" class="mb-4"></chevron-down-icon
+        ></a>
       </div>
     </section>
   </div>
@@ -38,5 +40,22 @@ export default Vue.extend({
 
 .welcome {
   background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+}
+
+#chevron-down-button {
+  color: #ffffff;
+}
+
+#chevron-down-button :hover {
+  color: #ffffff;
+}
+
+#down-arrow {
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+}
+#down-arrow:hover {
+  top: -10px;
 }
 </style>
