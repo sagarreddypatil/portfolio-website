@@ -5,10 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sagar Patil's Portfolio</title>
     <link rel="icon" href="/favicon.ico" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <style>
+      /* * {
+        border: 1px solid black;
+      } */
+
+      body {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      main {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        max-width: 50rem;
+        align-self: center;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header > h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 48px;
+        animation: slidein-left 1s ease 0s 1 normal forwards;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .icons {
+        font-size: 32px;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+        animation-name: slidein-right;
+      }
+
+      .icons > li {
+        display: inline-block;
+        animation: slidein-right 0.5s ease 0s 1 normal backwards;
+      }
+
+      .icons li:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+
+      .icons li:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+
+      main > hr {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
+
+      a > .bi {
+        color: black;
+      }
+
+      @keyframes slidein-left {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slidein-right {
+        0% {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>
-        Sagar Patil
-    </h1>
+    <main>
+      <div class="header">
+        <h1>Sagar Patil</h1>
+        <ul class="icons">
+          <li>
+            <a href="https://linkedin.com/in/patilsr"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://github.com/sagarreddypatil"
+              ><i class="bi bi-github"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <hr />
+    </main>
   </body>
 </html>
