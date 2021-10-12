@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
@@ -79,5 +79,13 @@
         </div>
       </section>
     </main>
+
+    <script>
+      document.querySelectorAll("img").forEach(elm => {
+        if(location.hostname === "sagarpatil.me" || location.hostname === "github.io"){
+          elm.src = "https://github.com/sagarreddypatil/portfolio-website/raw/master/" + elm.src;
+        }
+      });
+    </script>
   </body>
 </html>
