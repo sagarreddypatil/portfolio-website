@@ -83,7 +83,7 @@
     <script>
       document.querySelectorAll("img").forEach(elm => {
         if(location.hostname === "sagarpatil.me" || location.hostname === "github.io"){
-          elm.src = "https://github.com/sagarreddypatil/portfolio-website/raw/master" + src.replace(/^.*\/\/[^\/]+/, '');
+          elm.src = "https://github.com/sagarreddypatil/portfolio-website/raw/master" + elm.src.replace(/^.*\/\/[^\/]+/, '');
         }
       });
     </script>
