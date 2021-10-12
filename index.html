@@ -5,99 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sagar Patil's Portfolio</title>
     <link rel="icon" href="/favicon.ico" />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
-
-    <style>
-      /* * {
-        border: 1px solid black;
-      } */
-
-      body {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
-      main {
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        max-width: 50rem;
-        align-self: center;
-      }
-
-      .header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .header > h1 {
-        font-family: "Courier New", Courier, monospace;
-        font-size: 48px;
-        animation: slidein-left 1s ease 0s 1 normal forwards;
-        margin-bottom: 0.5rem;
-        margin-top: 0.5rem;
-      }
-
-      .icons {
-        font-size: 32px;
-        margin-bottom: 0.5rem;
-        margin-top: 0.5rem;
-        animation-name: slidein-right;
-      }
-
-      .icons > li {
-        display: inline-block;
-        animation: slidein-right 0.5s ease 0s 1 normal backwards;
-      }
-
-      .icons li:nth-child(2) {
-        animation-delay: 0.25s;
-      }
-
-      .icons li:nth-child(1) {
-        animation-delay: 0.5s;
-      }
-
-      main > hr {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-      }
-
-      a > .bi {
-        color: black;
-      }
-
-      @keyframes slidein-left {
-        0% {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes slidein-right {
-        0% {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-
-        100% {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <main>
@@ -117,6 +29,55 @@
         </ul>
       </div>
       <hr />
+      <section>
+        <h2>About Me</h2>
+        <div class="row">
+          <div class="column">
+            <p>Hi there! I am a student at Purdue University, Class of 2025.</p>
+            <p>
+              I am currently majoring in Computer Science and minoring in
+              Electrical and Computer Engineering.
+            </p>
+            <p>
+              You can reach me at
+              <a href="mailto:patilsr@purdue.edu">patilsr@purdue.edu</a> or
+              <a href="mailto:sagarreddypatil@gmail.com"
+                >sagarreddypatil@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Projects</h2>
+        <div class="column">
+          <h3>Rocket Test Stand</h3>
+          <div class="content">
+            <img src="static/img/IMG_3572.JPG"></img>
+            <p>
+              Over the summer, I wanted to build and test custom solid rocket motors, so I built a test stand to measure the thrust of motors.
+            </p>
+            <p>
+              To achieve this, I used a load cell along with an ESP 8266 microcontroller, to read the load cell and transmit the data.
+            </p>
+            <p>
+              All the code that runs on the ESP was written in C++ using the Arduino ecosystem.
+            </p>
+            <p>
+              The program on the ESP was responsible for reading the data from the load cell, storing the data in SPIFFS, sending data over TCP to connected clients, and broadcasting mDNS.
+            </p>
+            <p>
+              An electron app was created to recieve and visualize the data. The electron app used mDNS to find the IP address of the ESP, and then recieved data on a TCP socket. It uses uPlot to graph the data in real time, and also records the data.
+            </p>
+            <p>
+              Finally, it includes an interface to perform various functions on the ESP, such as starting/stopping data collection, downloading onboard data, and calibrating the load cell.
+            </p>
+            <p>
+              All the code for this project can be found on <a href="https://github.com/sagarreddypatil/rocket-test-stand">GitHub</a>.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
