@@ -78,15 +78,32 @@ main > hr {
 }
 
 .icons {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   animation-name: slidein-right;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  list-style: none;
 }
 
 .icons > li {
-  display: inline-block;
   animation: slidein-right 0.5s ease 0s 1 normal backwards;
+  margin: 4px;
+}
+
+.icons > li h2 {
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  background-color: black;
+  font-size: 24px;
+  margin: 0px;
+  padding: 0.5rem;
 }
 
 .icons li:nth-child(2) {
@@ -109,6 +126,7 @@ section {
 section > h2 {
   color: white;
   margin-right: auto;
+  margin-bottom: 0;
   padding: 0.5rem;
   background-color: black;
 }
@@ -125,17 +143,12 @@ section:nth-of-type(2) {
   animation-delay: 0.5s;
 }
 
-section p:nth-of-type(1) {
-  margin-top: 0;
-}
-
 section p {
   font-size: 18px;
   margin-bottom: 0px;
 }
 
 section h3 {
-  margin-top: 0px;
   position: relative;
   margin-right: auto;
 }
@@ -143,7 +156,7 @@ section h3 {
 .content img {
   float: left;
   max-width: 50%;
-  margin-right: 1rem;
+  margin: 1rem;
 }
 
 .content > p:nth-of-type(1) {
