@@ -1,118 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sagar Patil's Portfolio</title>
-    <link rel="icon" href="/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <main>
-      <div class="header">
-        <h1>Sagar Patil</h1>
-        <ul class="icons">
-          <li>
-            <a href="https://linkedin.com/in/patilsr"
-              ><i class="bi bi-linkedin"></i
-            ></a>
-          </li>
-          <li>
-            <a href="https://github.com/sagarreddypatil"
-              ><i class="bi bi-github"></i
-            ></a>
-          </li>
-          <!-- <li>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sagar Patil's Portfolio</title>
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main>
+    <div class="header">
+      <h1>Sagar Patil</h1>
+      <ul class="icons">
+        <li>
+          <a href="https://linkedin.com/in/patilsr"><i class="bi bi-linkedin"></i></a>
+        </li>
+        <li>
+          <a href="https://github.com/sagarreddypatil"><i class="bi bi-github"></i></a>
+        </li>
+        <!-- <li>
             <a href="http://google.com"><h2>Resume</h2> </a>
           </li> -->
-        </ul>
-      </div>
-      <hr />
-      <section>
-        <h2>About Me</h2>
-        <div class="row">
-          <div class="column">
-            <p>Hi there! I am a student at Purdue University, Class of 2025.</p>
-            <p>
-              I am currently majoring in Computer Science and minoring in
-              Electrical and Computer Engineering.
-            </p>
-            <p>
-              You can reach me at
-              <a href="mailto:patilsr@purdue.edu">patilsr@purdue.edu</a> or
-              <a href="mailto:sagarreddypatil@gmail.com"
-                >sagarreddypatil@gmail.com</a
-              >
-            </p>
-            <p>
-              This website is currently under construction, and I am still in
-              the process of adding new content. In the meanwhile, feel free to
-              check out my GitHub page. Link is on the top right.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section>
-        <h2>Projects</h2>
+      </ul>
+    </div>
+    <hr />
+    <section>
+      <h2>About Me</h2>
+      <div class="row">
         <div class="column">
-          <div class="column">
-            <h3>Rocket Test Stand</h3>
-            <div class="content">
-              <img src="static/img/IMG_3572.JPG" />
-              <p>
-                Over the summer, I wanted to build and test custom solid rocket
-                motors, so I built a test stand to measure the thrust of motors.
-              </p>
-              <p>
-                To achieve this, I used a load cell along with an ESP 8266
-                microcontroller, to read the load cell and transmit the data.
-              </p>
-              <p>
-                All the code that runs on the ESP was written in C++ using the
-                Arduino ecosystem.
-              </p>
-              <p>
-                The program on the ESP was responsible for reading the data from
-                the load cell, storing the data in SPIFFS, sending data over TCP
-                to connected clients, and broadcasting mDNS.
-              </p>
-              <p>
-                An electron app was created to recieve and visualize the data.
-                The electron app used mDNS to find the IP address of the ESP,
-                and then recieved data on a TCP socket. It uses uPlot to graph
-                the data in real time, and also records the data.
-              </p>
-              <p>
-                Finally, it includes an interface to perform various functions
-                on the ESP, such as starting/stopping data collection,
-                downloading onboard data, and calibrating the load cell.
-              </p>
-              <p>
-                All the code for this project can be found on
-                <a href="https://github.com/sagarreddypatil/rocket-test-stand"
-                  >GitHub</a
-                >.
-              </p>
-            </div>
+          <p>Hi there! I am a student at Purdue University, Class of 2025.</p>
+          <p>
+            I am currently majoring in Computer Science and minoring in
+            Electrical and Computer Engineering.
+          </p>
+          <p>
+            You can reach me at
+            <a href="mailto:patilsr@purdue.edu">patilsr@purdue.edu</a> or
+            <a href="mailto:sagarreddypatil@gmail.com">sagarreddypatil@gmail.com</a>
+          </p>
+          <p>
+            This website is currently under construction, and I am still in
+            the process of adding new content. In the meanwhile, feel free to
+            check out my GitHub page. Link is on the top right.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Projects</h2>
+      <div class="column">
+        <div class="column">
+          <h3>HawkVision</h3>
+          <div class="content">
+            <img
+              src="https://aws1.discourse-cdn.com/business4/uploads/openmv1/original/1X/903613820a44507275f559dd2e37ae6185f80689.jpeg"></img>
+            <p>
+              Hawkvision is a computer vision project I developed during my
+              time at the FIRST Robotics Team 2554.
+            </p>
+            <p>
+              The goal of the project was to track a target marked with retroreflective tape. The camera that we used on
+              the robot had a green ring light on it, so that the vision target appears bright green on the camera view.
+            </p>
+            <p>
+              To track the targets, we used a program called <a
+                href="https://github.com/WPIRoboticsProjects/GRIP">GRIP</a> to build an OpenCV pipeline with color
+              thresholds that narrowed out the vision target. We also calibarted the camera and found its focal length
+              to determine the angle to the target.
+            </p>
+            <p>
+              With this information, we were able to run a PID loop on the robot so that it could automatically align
+              with the target on command.
+            </p>
+            <p>
+              The code for this project can be found on <a href="https://gitlab.com/team-2554/hawkvision-2.0">GitLab</a>
+            </p>
           </div>
         </div>
-      </section>
-    </main>
-    <script>
-      document.querySelectorAll("img").forEach((elm) => {
-        if (
-          location.hostname === "sagarpatil.me" ||
-          location.hostname === "github.io"
-        ) {
-          elm.src =
-            "https://github.com/sagarreddypatil/portfolio-website/raw/master" +
-            elm.src.replace(/^.*\/\/[^\/]+/, "");
-        }
-      });
-    </script>
-  </body>
+        <div class="column">
+          <h3>Rocket Test Stand</h3>
+          <div class="content">
+            <img src="static/img/IMG_3572.JPG" />
+            <p>
+              Over the summer, I wanted to build and test custom solid rocket
+              motors, so I built a test stand to measure the thrust of motors.
+            </p>
+            <p>
+              To achieve this, I used a load cell along with an ESP 8266
+              microcontroller, to read the load cell and transmit the data.
+            </p>
+            <p>
+              All the code that runs on the ESP was written in C++ using the
+              Arduino ecosystem.
+            </p>
+            <p>
+              The program on the ESP was responsible for reading the data from
+              the load cell, storing the data in SPIFFS, sending data over TCP
+              to connected clients, and broadcasting mDNS.
+            </p>
+            <p>
+              An electron app was created to recieve and visualize the data.
+              The electron app used mDNS to find the IP address of the ESP,
+              and then recieved data on a TCP socket. It uses uPlot to graph
+              the data in real time, and also records the data.
+            </p>
+            <p>
+              Finally, it includes an interface to perform various functions
+              on the ESP, such as starting/stopping data collection,
+              downloading onboard data, and calibrating the load cell.
+            </p>
+            <p>
+              All the code for this project can be found on
+              <a href="https://github.com/sagarreddypatil/rocket-test-stand">GitHub</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelectorAll("img").forEach((elm) => {
+      if (
+        location.hostname === "sagarpatil.me" ||
+        location.hostname === "github.io"
+      ) {
+        elm.src =
+          "https://github.com/sagarreddypatil/portfolio-website/raw/master" +
+          elm.src.replace(/^.*\/\/[^\/]+/, "");
+      }
+    });
+  </script>
+</body>
+
 </html>
