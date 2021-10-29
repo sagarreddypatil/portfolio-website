@@ -8,6 +8,10 @@ body {
   padding-right: 5%;
 }
 
+li > a {
+  text-decoration: none;
+}
+
 :not(li) > a {
   position: relative;
   color: rgb(0, 0, 238);
