@@ -61,6 +61,41 @@
         <h2>Projects</h2>
         <div class="column">
           <div class="column">
+            <h3>Marching Cubes</h3>
+            <div class="content">
+              <img src="static/img/marching-cubes.JPG" />
+              <p>
+                The marching cubes algorithm is used to generate a 3D surface
+                out of a scalar field. As a side project, I wanted to implement
+                the Marching Cubes algorithm efficiently in the Unity3D game
+                engine to generate interactive, procedural terrain.
+              </p>
+              <p>
+                The first method I tried was to write the algorithm in a compute
+                shader. However, this proved to be too slow due to time it took
+                to move the vertices from the GPU back to the CPU.
+              </p>
+              <p>
+                After that, I tried to implement the algorithm in Unity's Job
+                system, which allowed for automatically parallelized tasks. This
+                offered a significant speed benefit.
+              </p>
+              <p>
+                In order to make the terrain editable, I also added a chunking
+                system, so that the terrain could be split into chunks and only
+                one chunk had to be regenerated when the underlying voxel data
+                changed.
+              </p>
+              <p>
+                The code for this project can be found on
+                <a
+                  href="https://github.com/sagarreddypatil/Marching-Cubes-Unity"
+                  >GitHub</a
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="column">
             <h3>Summarizer Chrome Extension</h3>
             <div class="content">
               <img src="static/img/summarizer.JPG" />
@@ -128,7 +163,8 @@
               </p>
               <p>
                 The code for this project can be found on
-                <a href="https://gitlab.com/team-2554/hawkvision-2.0">GitLab</a>
+                <a href="https://gitlab.com/team-2554/hawkvision-2.0">GitLab</a
+                >.
               </p>
             </div>
           </div>
