@@ -123,9 +123,11 @@
   </main>
   <script>
     document.querySelectorAll("img").forEach((elm) => {
+      let url = new URL(elm.src);
+
       if (
         location.hostname === "sagarpatil.me" ||
-        location.hostname === "github.io"
+        location.hostname === "github.io" && url.hostname === "sagarpatil.me"
       ) {
         elm.src =
           "https://github.com/sagarreddypatil/portfolio-website/raw/master" +
