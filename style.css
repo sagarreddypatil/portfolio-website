@@ -143,6 +143,23 @@ section:nth-of-type(2) {
   animation-delay: 0.5s;
 }
 
+.project {
+  animation: slidein-left 0.5s ease 0s 1 normal both;
+}
+
+.project:nth-of-type(1) {
+  animation-delay: 0.5s;
+}
+.project:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+.project:nth-of-type(3) {
+  animation-delay: 0.7s;
+}
+.project:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+
 section p {
   font-size: 18px;
   margin-bottom: 0px;
