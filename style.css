@@ -251,13 +251,13 @@ footer {
 }
 
 footer a {
-  color: rgb(255, 255, 17);
+  color: #7777ed;
 }
 
 footer a:hover {
-  color: rgb(255, 255, 17);
+  color: #7777ed;
 }
 
 footer a::before {
-  background-color: rgb(255, 255, 17);
+  background-color: #7777ed;
 }
