@@ -131,6 +131,65 @@
             </div>
           </div>
           <div class="column project">
+            <h3>NLP Discord Chatbot</h3>
+            <div class="column project">
+              <img src="static/img/amogus-in-action.JPG" />
+              <p>
+                After gaining a bit of experience in working with natural
+                language models and the <code>transformers</code> Python
+                library, I wanted to make a Discord chatbot for a server that me
+                and some of my friends were in.
+              </p>
+              <p>
+                The picture above shows the chatbot in action. As you can see,
+                it is called AMOGUS for comedic effect, in reference to the
+                popular pandemic game Among Us. You can also see that the bot
+                does not know how to perform multi-agent reinforcement learning,
+                which is expected behaviour.
+              </p>
+              <p>
+                The first hurdle in making a Discord bot was communicating with
+                Discord servers. Thankfully, there was already a Python library
+                that abstracted all of that away into a simple Flask-like
+                interface.
+              </p>
+              <p>
+                I then made an abstraction to keep track all the conversations
+                that the bot should be handling. I did this so that I could
+                isolate conevrsations between different users, as the chatbot
+                model I was looking to use did not seem to support having
+                multiple people talk in a conversation.
+              </p>
+              <p>
+                For the NLP model itself, I decided to go with Facebook's
+                pretrained Blenderbot model. Before choosing this model, I
+                experimented with other models such as DialoGPT, but many of
+                them had problems with the model getting repetitive, and I was
+                not able to fix that problem with different sampling parameters.
+              </p>
+              <p>
+                I also added an abstraction for the model itself, so that I
+                always have the option of switching between different natural
+                language models. I am currently working on getting the GPT-J
+                model working with the Discord bot, and while the model is a tad
+                bit overkill, it seems to be good at keeping track of multi-user
+                conversations, which is a feature I had always wanted to add to
+                the bot.
+              </p>
+              <p>
+                I am also currently working on optimizing the server code so
+                that it can run fast on a server with multiple GPUs and
+                automatically schedule text generation tasks.
+              </p>
+              <p>
+                The code for this project can be found on
+                <a href="https://github.com/sagarreddypatil/nlp-discord-chatbot"
+                  >GitHub</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="column project">
             <h3>Summarizer Chrome Extension</h3>
             <div class="content">
               <img src="static/img/summarizer.JPG" />
@@ -154,7 +213,9 @@
                 We also attempted to quantize the model using ONNX in order to
                 run it on users' machines, but that wasn't possible within the
                 scope of the Hackathon. Regardless, we were able to win the
-                hackathon.
+                hackathon. We completed the entire project, start to finish, in
+                the span of just a few hours, which we thought was fairly
+                impressive.
               </p>
               <p>
                 More information about the project can be found on
