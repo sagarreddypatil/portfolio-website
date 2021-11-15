@@ -6,6 +6,7 @@ body {
   font-family: "Courier New", Courier, monospace;
   padding-left: 5%;
   padding-right: 5%;
+  margin-bottom: 0px;
 }
 
 li > a {
@@ -146,6 +147,9 @@ section:nth-of-type(1) {
 section:nth-of-type(2) {
   animation-delay: 0.5s;
 }
+section:nth-of-type(3) {
+  animation-delay: 0.75s;
+}
 
 .project {
   animation: slidein-left 0.5s ease 0s 1 normal both;
@@ -161,6 +165,9 @@ section:nth-of-type(2) {
   animation-delay: 0.7s;
 }
 .project:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+.project:nth-of-type(5) {
   animation-delay: 0.8s;
 }
 
@@ -231,4 +238,26 @@ section h3::before {
     transform: rotateY(0);
     transform-origin: left;
   }
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer a {
+  color: rgb(255, 255, 17);
+}
+
+footer a:hover {
+  color: rgb(255, 255, 17);
+}
+
+footer a::before {
+  background-color: rgb(255, 255, 17);
 }
