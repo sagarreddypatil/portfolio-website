@@ -54,8 +54,15 @@
           <div class="column">
             <p>
               Hi there! I am a student at Purdue University majoring in Computer
-              Science
+              Science. I like rockets and computers. Some of my hobbies include
+              photography, reading sci-fi, and climbing (but don't ask me my
+              grade)
             </p>
+            <p>Here's a photo of me in front of an SR-71</p>
+            <img
+              src="static/img/me.jpg"
+              style="width: 100%; margin-top: 1rem"
+            />
             <!-- <p>
               You can reach me at
               <a href="mailto:patilsr@purdue.edu">patilsr@purdue.edu</a> or
@@ -70,9 +77,61 @@
         <h2>Projects</h2>
         <div class="column">
           <div class="column project">
+            <h3>PSPieChart</h3>
+            <div class="content">
+              <img src="static/img/pspc.png" />
+              <p>
+                At Purdue Space Program, we're developing a liquid bipropellant
+                rocket, and I'm one of the Avionics leads. The avionics system's
+                job includes actuating solenoid valves to pressurize the
+                propellant tanks, read sensor data, fire pyros for valves and
+                engine ignition, etc.
+              </p>
+              <p>
+                In order to orchestrate all this, and to view sensor data while
+                on the ground, we needed a dashboard software. The first place
+                we looked was Grafana. Almost everything about Grafana was
+                perfect, except its plotting performance. We had multiple
+                sensors logging at 1000's of samples a second, all of which
+                needed to be visualized. We also tried OpenMCT, which turned out
+                to be less that satisfactory with an undocumented interface.
+              </p>
+              <p>
+                The conclusion I reached was that we needed a custom dashboard,
+                so lo-and-behold, PSPieChart was born. The first iteration of
+                this software turned into a proof-of-concept of a better
+                plotter, and that turned out to be the only thing it was
+                successful at. Everything other than that was a mess. Learning
+                my lesson, I rewrote the whole thing. The screenshot above is
+                the current state of PSPieChart.
+              </p>
+              <p>
+                It features high-data rate plotting with real-time downsampling
+                (nothing too fancy, just average every n samples, where n is the
+                right amount to occupy a horizontal pixel). The system to manage
+                all your sources and charts and stuff is also super neat. It's
+                similar to
+                <a href="https://en.wikipedia.org/wiki/Inode">inodes</a>, where
+                each source is like a file. Things like charts and dashboards
+                are treated as directories. And to wrap it all up, there's a
+                very readable factory pattern to decide how to render the
+                currently selected item, both in the tree and the main view. If
+                you want a data source to, say, be in a chart, you'd just create
+                a "hard-link" by dragging the source into the chart. Very
+                intuitive!
+              </p>
+              <img src="static/img/pyrotest.jpg" style="margin-top: 1rem" />
+              <p>
+                Here's PSPieChart in action! We conducted a successful of the
+                pyrotechnic channels, using PSPC as our dashboard.
+              </p>
+            </div>
+          </div>
+
+          <div class="column project">
             <h3>Marching Cubes</h3>
             <div class="content">
-              <img src="static/img/marching-cubes.JPG" />
+              <img src="static/img/marching-cubes.JPG" width="50%" />
               <p>
                 The marching cubes algorithm is used to generate a 3D surface
                 out of a scalar field. As a side project, I wanted to implement
@@ -246,7 +305,7 @@
           <div class="column project">
             <h3>HawkVision</h3>
             <div class="content">
-              <img src="static/img/frcvision.jpeg" />
+              <img src="static/img/frcvision.jpeg" width="50%" />
               <p>
                 Hawkvision is a computer vision project I developed during my
                 time at the FIRST Robotics Team 2554.
