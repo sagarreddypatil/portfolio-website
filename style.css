@@ -184,7 +184,7 @@ section h3 {
 .content img {
   float: left;
   max-width: 50%;
-  margin: 1rem;
+  margin-right: 1rem;
 }
 
 .content > p:nth-of-type(1) {
