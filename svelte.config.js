@@ -10,11 +10,12 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter()
 	},
-	extensions: [".svelte", ".md"],
+	extensions: ['.svelte', '.md'],
 	preprocess: [
 		vitePreprocess(),
 		mdsvex({
-			extensions: ['.md']
+			extensions: ['.md'],
+			layout: 'src/routes/mdlayout.svelte'
 		})
 	]
 };

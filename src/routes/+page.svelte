@@ -1,9 +1,9 @@
 <script>
 	import ProjectCard from '../lib/ProjectCard.svelte';
+	import TopBar from '../lib/TopBar.svelte';
 </script>
 
-<div class="flex items-center justify-between p-3">
-	<h1 class="text-5xl font-bold animate-slidein-left">Sagar Patil</h1>
+<TopBar title="Sagar Patil">
 	<div class="text-4xl flex justify-end items-center">
 		<a
 			href="https://github.com/sagarreddypatil"
@@ -24,10 +24,7 @@
 			Resume
 		</a>
 	</div>
-</div>
-<hr
-	class="my-2 animate-[reveal-left_1s_ease-in-out_normal_forwards] border-black dark:border-white"
-/>
+</TopBar>
 <div class="m-4 sm:mx-0 grid mt-6 gap-4 sm:gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
 	<!-- loop from 1 to 10 and add ProjectCard -->
 	{#each Array(10) as _, i}
