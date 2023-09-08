@@ -2,7 +2,7 @@
 title: "Purdue Course Monitor"
 summary: "Because Coursicle costs money and I decided this was easier"
 coverImage: "/assets/pcm.png"
-order: 4.5
+order: 5.5
 ---
 
 _The Programmers’ Credo: we do these things not because they are easy, but
