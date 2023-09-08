@@ -167,7 +167,7 @@ It's perfect, it ticks all the boxes
 - Cheap, proven, off the shelf hardware
 - All the bandwidth we need
 
-Just one problem - RP2040 doesn't have an Ethernet MAC. But this wasn't a problem at all because, as it turns out, there exists a market for SPI to Ethernet chips, and WizNet happens to make one called the [W5500](https://www.wiznet.io/product-item/w5500/). This, with an [off the shelf switch](https://botblox.io/products/micro-gigabit-ethernet-switch) aws enough for all our communication needs.
+Just one problem - RP2040 doesn't have an Ethernet MAC. But this wasn't a problem at all because, as it turns out, there exists a market for SPI to Ethernet chips, and WizNet happens to make one called the [W5500](https://www.wiznet.io/product-item/w5500/). This, with an [off the shelf switch](https://botblox.io/products/micro-gigabit-ethernet-switch) was enough for all our communication needs.
 
 Of course, Taylor's attempts at a physical implementation weren't without hitches, but no problem was encountered which wasn't fixed by throwing multiple transformers at the problem (joking, only one transformer needed to be thrown).
 
