@@ -44,7 +44,7 @@ export default function Home({ allPosts }: Props) {
       </Head>
       <Layout>
         <div className="flex flex-col gap-4">
-          <Fieldset title="Projects">
+          <Fieldset title="ls ~/projects">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {allPosts.map((post) => {
                 return (

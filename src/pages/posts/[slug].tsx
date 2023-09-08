@@ -12,16 +12,24 @@ type Props = {
 export default function Post({ post }: Props) {
   const title = `${post.title} | Sagar Patil`;
 
+  const articleClasses =
+    "prose lg:prose-lg xl:prose-xl w-full max-w-full prose-neutral dark:prose-invert";
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
       <Layout>
-        <Fieldset title={post.title}>
+        <Fieldset title={`cat ${post.slug}.md`}>
+          <article className={articleClasses}>
+            <h2 className="!mb-1">{post.title}</h2>
+            <em>{post.summary}</em>
+            <div className="h-4" />
+          </article>
           <img src={post.coverImage} className="mb-4"></img>
           <article
-            className="prose lg:prose-lg xl:prose-xl w-full max-w-full prose-neutral dark:prose-invert"
+            className={articleClasses}
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </Fieldset>
@@ -50,12 +58,11 @@ type Params = {
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug, [
     "title",
-    "date",
+    "order",
     "slug",
-    "author",
-    "content",
-    "ogImage",
     "coverImage",
+    "summary",
+    "content",
   ]);
   const content = await markdownToHtml(post.content || "");
 
