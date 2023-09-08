@@ -43,23 +43,42 @@ export default function Home({ allPosts }: Props) {
         <title>Sagar's Portfolio</title>
       </Head>
       <Layout>
-        <Fieldset title="Projects">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {allPosts.map((post) => {
-              return (
-                <Card
-                  slug={post.slug}
-                  title={post.title}
-                  summary={post.summary}
-                  coverSrc={post.coverImage}
-                  key={post.slug}
-                />
-              );
-            })}
-          </div>
-        </Fieldset>
+        <div className="flex flex-col gap-4">
+          <Fieldset title="Projects">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {allPosts.map((post) => {
+                return (
+                  <Card
+                    slug={post.slug}
+                    title={post.title}
+                    summary={post.summary}
+                    coverSrc={post.coverImage}
+                    key={post.slug}
+                  />
+                );
+              })}
+            </div>
+          </Fieldset>
+          <WhoAmI />
+        </div>
       </Layout>
     </>
+  );
+}
+
+function WhoAmI() {
+  return (
+    <Fieldset title="whoami">
+      <article className="flex flex-col gap-3 text-lg">
+        <p>
+          Hi there! I am a student at Purdue University majoring in Computer
+          Science. I like rockets and computers. Some of my hobbies include
+          photography, reading sci-fi, and climbing (don't ask me my grade)
+        </p>
+        <p>Here's a photo of me in front of an SR-71</p>
+        <img src="/assets/me.jpg" alt="me in front of an sr-71" />
+      </article>
+    </Fieldset>
   );
 }
 
