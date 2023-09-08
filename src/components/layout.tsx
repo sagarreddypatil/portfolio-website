@@ -50,7 +50,7 @@ export default function Layout({ children }: Props) {
       <hr className="my-2 border-gray-500" />
       {children}
       <div className="h-3"></div>
-      <Fieldset title="About this site">
+      <Fieldset title="cat README.md">
         <div className="flex flex-row justify-between">
           <span className="prose dark:prose-invert">
             Source code on{" "}
@@ -58,7 +58,6 @@ export default function Layout({ children }: Props) {
               GitHub
             </Link>
           </span>
-          <span>Copyright 2023 Sagar Patil</span>
         </div>
       </Fieldset>
     </main>
