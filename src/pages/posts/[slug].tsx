@@ -31,7 +31,13 @@ export default function Post({ post }: Props) {
 }
 
 async function markdownToHtml(markdown: string) {
-  const result = await remark().use(html).process(markdown);
+  const result = await remark()
+    .use(html, {
+      allowDangerousHtml: true,
+      allowDangerousCharacters: true,
+      sanitize: false,
+    })
+    .process(markdown);
   return result.toString();
 }
 
