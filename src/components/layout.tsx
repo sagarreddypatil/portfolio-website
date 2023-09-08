@@ -3,6 +3,7 @@ import { OutlineButton } from "./button";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
+import Fieldset from "./fieldset";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -44,13 +45,21 @@ export default function Layout({ children }: Props) {
             <TbBrandGithubFilled />
             <span className="ms-1">GitHub</span>
           </OutlineButton>
-          {/* <OutlineButton href="" className="w-32">
-            <span className="ms-1">Resumé</span>
-          </OutlineButton> */}
         </div>
       </div>
       <hr className="my-2 border-gray-500" />
       {children}
+      <Fieldset title="About this site">
+        <div className="flex flex-row justify-between">
+          <span className="prose dark:prose-invert">
+            Source code on{" "}
+            <Link href="https://github.com/sagarreddypatil/portfolio-website">
+              GitHub
+            </Link>
+          </span>
+          <span>Copyright 2023 Sagar Patil</span>
+        </div>
+      </Fieldset>
     </main>
   );
 }
