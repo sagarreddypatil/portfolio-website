@@ -14,6 +14,7 @@ the Friends of Amateur(FAR) launch site, 30 miles north of Edwards AFB. After
 countless hours of setup overnight, we launch BZB for the 3rd and last time.
 
 ![BZB Launching](/assets/bzblaunch.jpg)
+**Photo by Andrew LaPrade**
 
 BZB is a MethaLOX bipropellant rocket. Built for the FAR-MARS competition by
 Purdue Space Program, and designed to reach 35k ft, the project started nearly a
