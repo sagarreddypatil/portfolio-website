@@ -7,7 +7,7 @@ h1 {
 }
 
 h2 {
-  @apply text-3xl font-bold;
+  @apply text-2xl;
 }
 
 h3 {
