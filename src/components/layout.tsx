@@ -49,6 +49,7 @@ export default function Layout({ children }: Props) {
       </div>
       <hr className="my-2 border-gray-500" />
       {children}
+      <div className="h-3"></div>
       <Fieldset title="About this site">
         <div className="flex flex-row justify-between">
           <span className="prose dark:prose-invert">
