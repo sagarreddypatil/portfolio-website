@@ -13,6 +13,8 @@ The conclusion I reached was that we needed a custom dashboard, so lo-and-behold
 
 It features high-data rate plotting with real-time downsampling (nothing too fancy, just average every n samples, where n is the right amount to occupy a horizontal pixel). The system to manage all your sources and charts and stuff is also super neat. It's similar to inodes, where each source is like a file. Things like charts and dashboards are treated as directories. And to wrap it all up, there's a very readable factory pattern to decide how to render the currently selected item, both in the tree and the main view. If you want a data source to, say, be in a chart, you'd just create a "hard-link" by dragging the source into the chart. Very intuitive!
 
+It's written in React, and packaged with Vite. The line count comes in under 2000 SLOC, and the final bundle clocks in just under 250 kB, gzipped. PSPieChart is a lean, mean, charting machine. Responsiveness and precision is prioritized over everything else.
+
 ![Pyro testing with PSPieChart](/assets/pyrotest.jpg)
 
 Here's PSPieChart in action! We conducted a successful of the pyrotechnic channels, using PSPC as our dashboard.
