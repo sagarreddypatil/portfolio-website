@@ -2,6 +2,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { OutlineButton } from "./button";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import Link from "next/link";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -25,7 +26,9 @@ export default function Layout({ children }: Props) {
       className={`flex min-h-screen flex-col max-w-5xl mx-auto px-4 py-4 sm:py-8 leading-5 dark:bg-black dark:text-white ${ibmPlexSans.variable} ${ibmPlexMono.variable} font-sans`}
     >
       <div className="flex justify-between flex-wrap">
-        <h3 className="font-mono">Sagar Patil</h3>
+        <Link href="/">
+          <h3 className="font-mono">Sagar Patil</h3>
+        </Link>
         <div className="flex flex-col sm:flex-row justify-between gap-2 align-middle items-center my-1">
           <OutlineButton
             href="https://linkedin.com/in/patilsr"

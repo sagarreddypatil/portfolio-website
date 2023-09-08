@@ -1,3 +1,4 @@
+import Fieldset from "@/components/fieldset";
 import Layout from "@/components/layout";
 import { PostType, getAllPosts, getPostBySlug } from "@/lib/api";
 import Head from "next/head";
@@ -17,10 +18,13 @@ export default function Post({ post }: Props) {
         <title>{title}</title>
       </Head>
       <Layout>
-        <article
-          className="prose lg:prose-lg xl:prose-xl max-w-full"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <Fieldset title={post.title}>
+          <img src={post.coverImage} className="mb-4"></img>
+          <article
+            className="prose lg:prose-lg xl:prose-xl w-full max-w-full prose-neutral dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </Fieldset>
       </Layout>
     </>
   );

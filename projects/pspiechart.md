@@ -1,6 +1,6 @@
 ---
 title: "PSPieChart"
-summary: "A dashboard for rockets"
+summary: "High performance dashboard for rocket operations"
 coverImage: "/assets/pspc.png"
 order: 1
 ---

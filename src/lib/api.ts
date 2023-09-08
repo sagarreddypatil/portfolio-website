@@ -44,7 +44,7 @@ export function getAllPosts(fields: string[] = []) {
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     // i guess all posts have the "order" field?
-    .sort((p1, p2) => (p1.order > p2.order ? -1 : 1));
+    .sort((p1, p2) => (p1.order > p2.order ? 1 : -1));
 
   return posts;
 }
