@@ -27,7 +27,6 @@ year before I joined the team.
 BZBs avionics got a few improvements after I joined the team, some of which I
 contributed to. But the next rocket, CMS, I'd play a much bigger part in.
 
-This is a render of CMS, by me
 ![CMS Render](/assets/cmsrender.jpg)
 
 It was decided that this rocket would use a bang-bang tank pressurization
