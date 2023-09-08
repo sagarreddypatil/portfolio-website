@@ -44,9 +44,9 @@ export default function Layout({ children }: Props) {
             <TbBrandGithubFilled />
             <span className="ms-1">GitHub</span>
           </OutlineButton>
-          <OutlineButton href="" className="w-32">
+          {/* <OutlineButton href="" className="w-32">
             <span className="ms-1">Resumé</span>
-          </OutlineButton>
+          </OutlineButton> */}
         </div>
       </div>
       <hr className="my-2 border-gray-500" />

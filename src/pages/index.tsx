@@ -60,6 +60,17 @@ export default function Home({ allPosts }: Props) {
             </div>
           </Fieldset>
           <WhoAmI />
+          <Fieldset title="About this site">
+            <div className="flex flex-row justify-between">
+              <span className="prose">
+                Source code on{" "}
+                <Link href="https://github.com/sagarreddypatil/portfolio-website">
+                  GitHub
+                </Link>
+              </span>
+              <span>Copyright 2023 Sagar Patil</span>
+            </div>
+          </Fieldset>
         </div>
       </Layout>
     </>
