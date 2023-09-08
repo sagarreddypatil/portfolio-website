@@ -2,7 +2,7 @@
 title: "LLM Chatbot"
 summary: "A delightful and uninformative addition to your Discord server"
 coverImage: "/assets/amogus-in-action.JPG"
-order: 4
+order: 2
 ---
 
 **Note: I created this bot almost 2 years before ChatGPT was released, any foreshadowing is accidental**

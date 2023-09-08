@@ -2,7 +2,7 @@
 title: "Model rocket test stand"
 summary: "Cheap and easy way to characterize your rocket motors!"
 coverImage: "/assets/IMG_3572.JPG"
-order: 3
+order: 4
 ---
 
 Summer after high school, I was bored and jobless, so I decided to build and test custom solid rocket motors (yes, sugar rockets, no do not try this at home), so I built a test stand to measure the thrust of motors.

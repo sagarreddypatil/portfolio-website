@@ -2,7 +2,7 @@
 title: "Marching Cubes"
 summary: "Generating isosurface meshes for dynamic terrain"
 coverImage: "/assets/marching-cubes.JPG"
-order: 2
+order: 3
 ---
 
 The marching cubes algorithm is used to generate a 3D surface out of a scalar field. As a side project, I wanted to implement the Marching Cubes algorithm efficiently in the Unity3D game engine to generate interactive, procedural terrain.
