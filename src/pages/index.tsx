@@ -18,7 +18,7 @@ function Card(props: CardProps) {
       <div className="rounded-none outline outline-1 outline-black dark:outline-gray-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black overflow-hidden me-[6px] mb-[6px] shadow-[5px_5px_0px_1px_rgba(0,0,0,0.5)] dark:shadow-[5px_5px_0px_1px_rgba(255,255,255,0.25)]">
         <div className="w-full">
           <img
-            className="object-cover object-left w-full aspect-[3/2]"
+            className="object-cover object-left-top w-full aspect-[3/2]"
             src={props.coverSrc}
             alt={`Image for ${props.title}`}
           />
@@ -52,6 +52,7 @@ export default function Home({ allPosts }: Props) {
                   title={post.title}
                   summary={post.summary}
                   coverSrc={post.coverImage}
+                  key={post.slug}
                 />
               );
             })}
