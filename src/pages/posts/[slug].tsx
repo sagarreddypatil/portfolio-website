@@ -13,7 +13,7 @@ export default function Post({ post }: Props) {
   const title = `${post.title} | Sagar Patil`;
 
   const articleClasses =
-    "prose lg:prose-lg xl:prose-xl w-full max-w-full prose-neutral dark:prose-invert";
+    "prose md:prose-lg lg:prose-xl max-w-none prose-neutral dark:prose-invert";
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function Post({ post }: Props) {
       <Layout>
         <Fieldset title={`cat ${post.slug}.md`}>
           <article className={articleClasses}>
-            <h2 className="!mb-1">{post.title}</h2>
+            <h1 className="!mb-1">{post.title}</h1>
             <em>{post.summary}</em>
             <div className="h-4" />
           </article>

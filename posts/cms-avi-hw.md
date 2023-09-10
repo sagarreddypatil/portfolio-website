@@ -7,7 +7,7 @@ order: 0
 
 **WIP revision of one of the flight boards**
 
-### Background
+## Background
 
 Summer 2022, after a 3 hour road trip from LA to the Mojave desert, we arrive at
 the Friends of Amateur(FAR) launch site, 30 miles north of Edwards AFB. After
@@ -44,7 +44,7 @@ As the (other) avionics lead and CS student, I'll be focusing on the system
 design, and how we arrived at some of the hardware design choices that we did
 for this rocket.
 
-### Microcontroller selection
+## Microcontroller selection
 
 This one's a never ending tug of war between the CS and the ECE. All things
 aside, I would've opted for the **STM32H7** line of MCUs, or at least something
@@ -95,7 +95,7 @@ To top it off, these chips were impossible to brick. I really mean it. These
 chips come with a permanent bootloader ROM activated with an input pin, so no
 matter how bad you mess up the firmware, you can always flash it again over USB.
 
-### ADC selection
+## ADC selection
 
 Honestly, my only constraint was that it communicated over SPI. I2C sucks. We
 settled on the ADS131M02. It
@@ -107,7 +107,7 @@ settled on the ADS131M02. It
 
 And this is all we were looking for in an ADC.
 
-#### Why I2C sucks
+### Why I2C sucks
 
 My hatred for I2C was born after working with the BNO055, a cheap IMU that's
 commonly found in older smartphones and model rockets that land themselves.
@@ -170,7 +170,7 @@ Just one problem - RP2040 doesn't have an Ethernet MAC. But this wasn't a proble
 
 Of course, Taylor's attempts at a physical implementation weren't without hitches, but no problem was encountered which wasn't fixed by throwing multiple transformers at the problem (joking, only one transformer needed to be thrown).
 
-### Radio
+## Radio
 
 Oh boy, where do I even begin? At the solution - the RFD900.
 
@@ -197,7 +197,7 @@ In the end though, we decided it would be too impractical to do anything other t
 
 We also added LTE to the rocket, because we found that our launch side had reception when we were launching BZB.
 
-### System Design
+## System Design
 
 Combining all of this, we arrive at
 

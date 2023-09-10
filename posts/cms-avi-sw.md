@@ -12,6 +12,8 @@ order: -1
 
 This document is a direct continuation of Avionics System Design, and details information about flight and GSE software for Purdue Space Program Liquid's next rocket, the CraterMaker Special.
 
+## Flight Software
+
 ### Development Environment
 
 The RP2040 has a very well documented and easy to use SDK written in C.
@@ -134,16 +136,12 @@ struct definition.
 
 ```c
 typedef struct {
-  char header[4]; // "SEN"
-  u16 sensor_id;
-  u64 time;
-  u64 counter;
+  u16 sensor_id; // globally unique
+  u64 time; // microseconds since UNIX epoch
+  u64 counter; // per sensor
   i64 data;
 } sensornet_packet_t;
 ```
-
-_Sidenote: looking at this now, I have no idea why the header exists. I think I
-might have had multiple packet types at one point. Might remove it_
 
 The system is very straightforward - take one or more of these packets, put them
 on a UDP packet, and send them on their merry way.
@@ -287,3 +285,39 @@ The flight software can be compiled either on the Pi itself, or copied over.
 
 The Pi is added to a [tailscale](https://tailscale.com/) network, so it can be
 securely accessed anywhere there's internet.
+
+## GSE Software
+
+This basically comes down to implementing everything in this data path diagram.
+
+![Data Path Diagram](/assets/data-path-diagram.png)
+
+Every maroon block in this image is a separate piece of software that needs to
+be written.
+
+These are the ones with development underway
+
+### PSPieChart
+
+[See this post](http://localhost:3000/posts/pspiechart)
+
+### SensorNet Server
+
+This is a very crucial piece of software with this core requirement
+
+- Log every single SensorNet packet that hits its socket
+
+We selected NodeJS as the platform for this because it made it easy to integrate
+REST endpoints for setting and retrieving sensor calibrations, and to add
+WebSocket support so that packets can be forwarded to PSPieChart.
+
+We also decided on using InfluxDB as the timeseries database, because it's
+popular and fits our needs.
+
+This server includes endpoints to configure sensor ID to name mappings,
+calibrations, custom expressions for derived data, and retrieval of historical
+data.
+
+### CommandNet Server
+
+This is just a Python implementation of the protocol, with a REST API.
