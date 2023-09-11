@@ -21,7 +21,7 @@ export default function Post({ post }: Props) {
         <title>{title}</title>
       </Head>
       <Layout>
-        <Fieldset title={`cat ${post.slug}.md`}>
+        <Fieldset title={`cat ~/${post.slug}.md`}>
           <article className={articleClasses}>
             <h1 className="!mb-1">{post.title}</h1>
             <em>{post.summary}</em>
@@ -51,19 +51,12 @@ async function markdownToHtml(markdown: string) {
 
 type Params = {
   params: {
-    slug: string;
+    slug: string[];
   };
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "order",
-    "slug",
-    "coverImage",
-    "summary",
-    "content",
-  ]);
+  const post = getPostBySlug(params.slug.join("/"));
   const content = await markdownToHtml(post.content || "");
 
   return {
@@ -77,13 +70,13 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {
       return {
         params: {
-          slug: post.slug,
+          slug: post.slug.split("/"),
         },
       };
     }),

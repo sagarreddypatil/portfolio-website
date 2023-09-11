@@ -1,16 +1,21 @@
 // from https://github.com/vercel/next.js/tree/canary/examples/blog-starter
 
 import fs from "fs";
+import { globSync } from "glob";
 import { join } from "path";
 import matter from "gray-matter";
 
 const postsDir = join(process.cwd(), "posts");
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDir);
+  return globSync(`${postsDir}/**/*.md`).map((file) => {
+    // remove postsDir
+    const slug = file.split(postsDir)[1].slice(1);
+    return slug;
+  });
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
+export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDir, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -20,29 +25,19 @@ export function getPostBySlug(slug: string, fields: string[] = []) {
     [key: string]: string;
   };
 
-  const items: Items = {};
-
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === "slug") {
-      items[field] = realSlug;
-    }
-    if (field === "content") {
-      items[field] = content;
-    }
-
-    if (typeof data[field] !== "undefined") {
-      items[field] = data[field];
-    }
-  });
+  const items: Items = {
+    slug: realSlug,
+    content,
+    ...data,
+  };
 
   return items;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts() {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map((slug) => getPostBySlug(slug, fields))
+    .map((slug) => getPostBySlug(slug))
     // i guess all posts have the "order" field?
     .sort((p1, p2) => (p1.order > p2.order ? 1 : -1));
 

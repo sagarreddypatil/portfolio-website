@@ -67,13 +67,18 @@ export default function Home({ allPosts }: Props) {
 }
 
 function WhoAmI() {
+  const bday = new Date(2003, 12, 30);
+  const ageDate = new Date(Date.now() - bday.getTime());
+  const age = Math.floor(ageDate.getTime() / 3.154e10);
+
   return (
     <Fieldset title="whoami">
       <article className="flex flex-col gap-3 text-lg">
         <p>
-          Hi there! I am a student at Purdue University majoring in Computer
-          Science. I like rockets and computers. Some of my hobbies include
-          photography, reading sci-fi, and climbing (don't ask me my grade)
+          Hi there! I am a {age} y/o student at Purdue University majoring in
+          Computer Science. I like rockets and computers. Some of my hobbies
+          include photography, reading sci-fi, and climbing (don't ask me my
+          grade)
         </p>
         <p>Here's a photo of me in front of an SR-71</p>
         <img src="/assets/me.jpg" alt="me in front of an sr-71" />
@@ -83,13 +88,7 @@ function WhoAmI() {
 }
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    "title",
-    "order",
-    "slug",
-    "coverImage",
-    "summary",
-  ]);
+  const allPosts = getAllPosts();
 
   return {
     props: { allPosts },
