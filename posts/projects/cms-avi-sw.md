@@ -93,9 +93,9 @@ are connected to a GPIO pin, which can be used to trigger a subroutine, to say,
 read data off of an ADC and add to to the queue to be stored and transmitted.
 
 Implementing DMA isn't really at the highest priority though - the only place
-where it's really applicable would be the Ethernet driver. Devices like the ADC
-are only read from on data ready interrupts, say writing a UDP packet to the
-Ethernet bridge would take longer than is necessary to spend on the main thread.
+where it's really applicable would be the Ethernet and Flash drivers. Devices
+like the ADC read short bursts of data triggered by interrupts, and we decided
+that it's not worth the effort to implement DMA for these devices.
 
 **Fun fact: the RP2040's DMA system is actually turing complete. More info
 [here](https://hackaday.com/2023/01/20/help-needed-on-thumb-image-rp2040-dma-hack-makes-another-cpu-core/)**
