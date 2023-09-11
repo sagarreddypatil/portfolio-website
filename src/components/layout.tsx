@@ -33,7 +33,7 @@ export default function Layout({ children }: Props) {
         <div className="flex flex-col sm:flex-row justify-between gap-2 align-middle items-center my-1">
           <OutlineButton
             href="https://linkedin.com/in/patilsr"
-            className="w-32"
+            className="w-32 bg-[#0077b5] text-white"
           >
             <FaLinkedinIn />
             <span className="ms-1">LinkedIn</span>
@@ -47,7 +47,7 @@ export default function Layout({ children }: Props) {
           </OutlineButton>
         </div>
       </div>
-      <hr className="my-2 border-gray-500" />
+      <hr className="my-2 border-black" />
       {children}
       <div className="h-3"></div>
       <Fieldset title="cat README.md">
