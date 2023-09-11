@@ -1,3 +1,4 @@
+import Article from "@/components/article";
 import Fieldset from "@/components/fieldset";
 import Layout from "@/components/layout";
 import { PostType, getAllPosts, getPostBySlug } from "@/lib/api";
@@ -22,11 +23,11 @@ export default function Post({ post }: Props) {
       </Head>
       <Layout>
         <Fieldset title={`cat ~/${post.slug}.md`}>
-          <article className={articleClasses}>
+          <Article>
             <h1 className="!mb-1">{post.title}</h1>
             <em>{post.summary}</em>
             <div className="h-4" />
-          </article>
+          </Article>
           <img src={post.coverImage} className="mb-4"></img>
           <article
             className={articleClasses}

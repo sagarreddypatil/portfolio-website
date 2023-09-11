@@ -4,6 +4,7 @@ import Link from "next/link";
 import Layout from "@/components/layout";
 import Fieldset from "@/components/fieldset";
 import Head from "next/head";
+import Article from "@/components/article";
 
 type CardProps = {
   slug: string;
@@ -60,6 +61,7 @@ export default function Home({ allPosts }: Props) {
             </div>
           </Fieldset>
           <WhoAmI />
+          <Coursework />
         </div>
       </Layout>
     </>
@@ -83,6 +85,46 @@ function WhoAmI() {
         <p>Here's a photo of me in front of an SR-71</p>
         <img src="/assets/me.jpg" alt="me in front of an sr-71" />
       </article>
+    </Fieldset>
+  );
+}
+
+function Coursework() {
+  return (
+    <Fieldset title="~/coursework/readme.md">
+      <Article>
+        <h4>Fall 2021</h4>
+        <ul>
+          <li>CS 18000 - Problem Solving and Object-Oriented Programming</li>
+          <li>CS 19300 - Tools</li>
+          <li>MA 26100 - Multivariate Calculus</li>
+        </ul>
+        <h4>Spring 2021</h4>
+        <ul>
+          <li>CS 18200 - Discrete Mathamatics</li>
+          <li>CS 24000 - Programming in C</li>
+          <li>MA 26500 - Linear Algebra</li>
+        </ul>
+        <h4>Fall 2022</h4>
+        <ul>
+          <li>CS 25000 - Computer Architecture</li>
+          <li>CS 25100 - Data Structures and Algorithms</li>
+        </ul>
+        <h4>Spring 2022</h4>
+        <ul>
+          <li>CS 25200 - Systems Programming</li>
+          <li>CS 47100 - Intro to Artificial Intelligence</li>
+          <li>STAT 51100 - Statistical Methods</li>
+        </ul>
+        <h4>Fall 2023</h4>
+        <ul>
+          <li>CS 35400 - Operating Systems</li>
+          <li>CS 37300 - Data Mining & Machine Learning</li>
+          <li>CS 38100 - Intro to Analysis of Algorithms</li>
+          <li>STAT 512 - Applied Regression Analysis</li>
+          <li>COM 21700 - Science Writing and Presentation</li>
+        </ul>
+      </Article>
     </Fieldset>
   );
 }
