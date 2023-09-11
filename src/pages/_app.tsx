@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
         strategy="lazyOnload"
         src="https://www.googletagmanager.com/gtag/js?id=G-M3KTQVTXVG"
       />
-      <Script strategy="lazyOnload">
+      <Script strategy="lazyOnload" id="analytics">
         {`window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
