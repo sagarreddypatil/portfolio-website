@@ -79,8 +79,8 @@ function WhoAmI() {
         <p>
           Hi there! I am a {age} y/o student at Purdue University majoring in
           Computer Science. I like rockets and computers. Some of my hobbies
-          include photography, reading sci-fi, and climbing (don't ask me my
-          grade)
+          include photography, reading sci-fi, 3d printing, software defined
+          radio, and climbing (don't ask me my grade)
         </p>
         <p>Here's a photo of me in front of an SR-71</p>
         <img src="/assets/me.jpg" alt="me in front of an sr-71" />
