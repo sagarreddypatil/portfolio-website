@@ -45,6 +45,7 @@ export default function Home({ allPosts }: Props) {
       </Head>
       <Layout>
         <div className="flex flex-col gap-4">
+          <WhoAmI />
           <Fieldset title="ls ~/projects">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {allPosts.map((post) => {
@@ -60,7 +61,6 @@ export default function Home({ allPosts }: Props) {
               })}
             </div>
           </Fieldset>
-          <WhoAmI />
           <Coursework />
         </div>
       </Layout>
@@ -82,8 +82,15 @@ function WhoAmI() {
           include photography, reading sci-fi, 3d printing, software defined
           radio, and climbing (don't ask me my grade)
         </p>
-        <p>Here's a photo of me in front of an SR-71</p>
-        <img src="/assets/me.jpg" alt="me in front of an sr-71" />
+        <p>
+          Here's a photo of me in front of an SR-71 (and Space Shuttle
+          Discovery)
+        </p>
+        <img
+          src="/assets/me.jpg"
+          alt="me in front of an sr-71"
+          className="h-[350px] object-cover"
+        />
       </article>
     </Fieldset>
   );
