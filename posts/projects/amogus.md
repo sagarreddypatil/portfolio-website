@@ -7,13 +7,13 @@ order: 2
 
 **Note: I created this bot almost 2 years before ChatGPT was released, any foreshadowing is accidental**
 
-After gaining a bit of experience in working with natural language models and the transformers Python library, I wanted to make a Discord chatbot for a server that me and some of my friends were in.
+After gaining a bit of experience in working with natural language models and the transformers Python library, I wanted to make a Discord chatbot for a server that my friends and I were in.
 
-The picture above shows the chatbot in action. As you can see, it is called AMOGUS for comedic effect, in reference to the popular pandemic game Among Us. You can also see that the bot does not know how to perform multi-agent reinforcement learning, which is expected behavior.
+The picture above shows the chatbot in action. As you can see, it is called AMOGUS for comedic effect, referencing the popular pandemic game Among Us. You can also see that the bot does not know how to perform multi-agent reinforcement learning, which is expected behavior.
 
 The first hurdle in making a Discord bot was communicating with Discord servers. Thankfully, there was already a Python library that abstracted all of that away into a simple Flask-like interface.
 
-I then made an abstraction to keep track all the conversations that the bot should be handling. I did this so that I could isolate conversations between different users, as the chatbot model I was looking to use did not seem to support having multiple people talk in a conversation.
+I then made an abstraction to keep track of all the conversations that the bot should be handling. I did this so that I could isolate conversations between different users, as the chatbot model I was looking to use did not seem to support having multiple people talk in a conversation.
 
 For the NLP model itself, I decided to go with Facebook's pretrained Blenderbot model. Before choosing this model, I experimented with other models such as DialoGPT, but many of them had problems with the model getting repetitive, and I was not able to fix that problem with different sampling parameters (temperature, top-p, top-k, etc).
 

@@ -9,9 +9,9 @@ order: 0
 
 ## Background
 
-Summer 2022, after a 3 hour road trip from LA to the Mojave desert, we arrive at
+In Summer 2022, after a 3-hour road trip from LA to the Mojave desert, we arrived at
 the Friends of Amateur(FAR) launch site, 30 miles north of Edwards AFB. After
-countless hours of setup overnight, we launch BZB for the 3rd and last time.
+countless hours of setup overnight, we launched BZB for the 3rd and last time.
 
 ![BZB Launching](/assets/bzblaunch.jpg)
 **Photo by Andrew LaPrade**
@@ -31,13 +31,13 @@ contributed to. But the next rocket, CMS, I'd play a much bigger part in.
 
 It was decided that this rocket would use a bang-bang tank pressurization
 system, where instead of a regulator, solenoid valves would be switched
-on-and-off really quickly to flow helium into the fuel tanks. This made Avionics
+on and off quickly to flow helium into the fuel tanks. This made Avionics
 a critical system of the rocket.
 
 As work on BZB slowed down, [Taylor
 Duchinski](https://www.duchinskiprojects.com/cms-avionics) and I got started
 working on the avionics for CMS. On his website, you'll find an incredible
-amount of detail on the CMS's electronics. The picture of the board above is
+amount of detail on the CMS's electronics. The picture of the board above was
 designed by him.
 
 As the (other) avionics lead and CS student, I'll be focusing on the system
@@ -46,16 +46,16 @@ for this rocket.
 
 ## Microcontroller selection
 
-This one's a never ending tug of war between the CS and the ECE. All things
+This one's a never-ending tug-of-war between the CS and the ECE. All things
 aside, I would've opted for the **STM32H7** line of MCUs, or at least something
 like an **STM32F**. STM32s are great, they have all the performance you need,
 and a passable SDK and toolchain. Unfortunately, system design on the rocket
 occurred around the same time as a massive chip shortage. Stock for these chips
 was uncertain, and we knew we were going to fry more than a few.
 
-These factors considered, we opted for the RP2040, by the Raspberry Pi
-foundation. Rocking two ARM Cortex M0+ cores and 264K of SRAM, this chip was a
-beast by no means. But for our purposes it was sufficient, cheap, and very much
+With these factors considered, we opted for the RP2040, by the Raspberry Pi
+Foundation. Rocking two ARM Cortex M0+ cores and 264K of SRAM, this chip was a
+beast by no means. But for our purposes, it was sufficient, cheap, and very much
 in stock.
 
 One of my most emphasized factors for MCU selection was how easy it was to
@@ -91,9 +91,9 @@ target_link_libraries(hello_world pico_stdlib)
 pico_add_extra_outputs(hello_world)
 ```
 
-To top it off, these chips were impossible to brick. I really mean it. These
+To top it off, these chips were impossible to brick. I mean it. These
 chips come with a permanent bootloader ROM activated with an input pin, so no
-matter how bad you mess up the firmware, you can always flash it again over USB.
+matter how much you mess up the firmware, you can always flash it again over USB.
 
 ## ADC selection
 
@@ -114,7 +114,7 @@ commonly found in older smartphones and model rockets that land themselves.
 
 While writing a driver for this chip, I discovered the lovely fact that I2C has
 a "feature" called clock stretching, where if a peripheral device needs the host
-to wait, it can pull the SCK line low until its done.
+to wait, it can pull the SCK line low until it's done.
 
 This excuse of a feature caused me several unnecessary hours of frustrating
 debugging, after which I vowed to never work with an I2C device again. And so
@@ -163,7 +163,7 @@ During one of our workdays, I jokingly suggested that we use Ethernet across the
 It's perfect, it ticks all the boxes
 
 - Physical spec
-- Cheap, proven, off the shelf hardware
+- Cheap, proven, off-the-shelf hardware
 - All the bandwidth we need
 
 Just one problem - RP2040 doesn't have an Ethernet MAC. But this wasn't a problem at all because, as it turns out, there exists a market for SPI to Ethernet chips, and WizNet happens to make one called the [W5500](https://www.wiznet.io/product-item/w5500/). This, with an [off the shelf switch](https://botblox.io/products/micro-gigabit-ethernet-switch) was enough for all our communication needs.
@@ -181,19 +181,19 @@ Arriving at this wasn't easy, and I wasn't set on the decision until an industry
 expert vouched for its effectiveness.
 
 I spent an unreasonable amount of time looking at sample implementations for
-chips like the TI CC1101, and shopping for >1W amplifiers which we could
+chips like the TI CC1101, and shopping for >1W amplifiers that we could
 (presumably?) use with a HAM license.
 
-Antenna design was also a whole can of worms. At some point, we were designing
-for the mid-airframe panels being carbon fiber, a conductive material which
-severely impedes radio. We explored the use of getting PTFE copperclad, etching
+The antenna design was also a whole can of worms. At some point, we were designing
+for the mid-airframe panels to be carbon fiber, a conductive material that
+severely impedes radio. We explored the use of getting PTFE copper-clad, etching
 a patch antenna on it, and heat-forming around the circumference of the vehicle.
 This wasn't our idea, we got it from [this
 paper](https://apps.dtic.mil/sti/pdfs/AD1105046.pdf), which contains this very
 promising sentence: "Destroy by any means possible to prevent disclosure of
 contents or reconstruction of the document. Do not return to the originator.", followed by "UNCLASSIFIED".
 
-In the end though, we decided it would be too impractical to do anything other than just change the mid-airframe panels to be E-glass, a class of fiberglass transparent to radio, and use an off the shelf monopole antenna.
+In the end, we decided it would be too impractical to do anything other than just change the mid-airframe panels to be E-glass, a class of fiberglass transparent to radio, and use an off-the-shelf monopole antenna.
 
 We also added LTE to the rocket, because we found that our launch side had reception when we were launching BZB.
 
@@ -202,7 +202,7 @@ We also added LTE to the rocket, because we found that our launch side had recep
 Combining all of this, we arrive at
 
 ![CMS System Diagram](/assets/cms-system.png)
-**From our preliminary design review slides, some details outdated**
+**From our preliminary design review slides, some details are outdated**
 
 The full PDR can be seen here
 

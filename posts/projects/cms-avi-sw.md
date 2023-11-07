@@ -10,13 +10,13 @@ order: -1
 **Take a look at [the avionics system design](/posts/cms-avi-hw) and
 [PSPieChart](/posts/pspiechart) posts to get context on this document.**
 
-This document is a direct continuation of Avionics System Design, and details information about flight and GSE software for Purdue Space Program Liquid's next rocket, the CraterMaker Special.
+This document is a direct continuation of Avionics System Design and details information about flight and GSE software for Purdue Space Program Liquid's next rocket, the CraterMaker Special.
 
 ## Flight Software
 
 ### Development Environment
 
-The RP2040 has a very well documented and easy to use SDK written in C.
+The RP2040 has a very well-documented and easy-to-use SDK written in C.
 Everything can be configured to CMake.
 
 The first step to start developing software for the rocket was determining the
@@ -55,10 +55,10 @@ PSPL_CMS_Avionics_Code/
 └── Makefile <- User-friendly build script, calls CMake
 ```
 
-Finally, there's a top level `Makefile` which handles dependencies, compilation,
+Finally, there's a top-level `Makefile` which handles dependencies, compilation,
 and generating the compilation database (for intellisense)
 
-Though Doxygen _is_ used for generating documentation, it's not really commonly
+Though Doxygen _is_ used for generating documentation, it's not commonly
 used, and we usually just refer to the docstrings.
 
 The dependencies for flight software development are very minimal, needing only
@@ -76,7 +76,7 @@ needed for that.
 One of the requirements we have for peripherals on the rocket, which most of our
 selected parts comply, is that they communicate over SPI.
 
-SPI is a fantastic protocol, and can be abstracted away to the level of
+SPI is a fantastic protocol and can be abstracted away to the level of
 selecting a peripheral, and sending and receiving a bitstream to the peripheral
 at a specified rate.
 
@@ -87,26 +87,26 @@ communication with the device is commanded by the main thread. This makes it
 easy to meet deadlines when it comes to upcoming tests.
 
 The next step is implementing interrupt-driven I/O. For our purposes, this isn't
-something that's necessary 99% of the time, but it becomes a problem whenever we
-run any long-running subroutines. On the hardware side, DRDY's from peripherals
-are connected to a GPIO pin, which can be used to trigger a subroutine, to say,
-read data off of an ADC and add to to the queue to be stored and transmitted.
+necessary 99% of the time, but it becomes a problem whenever we run any
+long-running subroutines. On the hardware side, DRDY's from peripherals are
+connected to a GPIO pin, which can be used to trigger a subroutine, to say, read
+data off of an ADC and add it to the queue to be stored and transmitted.
 
 Implementing DMA isn't really at the highest priority though - the only place
-where it's really applicable would be the Ethernet and Flash drivers. Devices
+where it's applicable would be the Ethernet and Flash drivers. Devices
 like the ADC read short bursts of data triggered by interrupts, and we decided
 that it's not worth the effort to implement DMA for these devices.
 
-**Fun fact: the RP2040's DMA system is actually turing complete. More info
+**Fun fact: the RP2040's DMA system is turing complete. More info
 [here](https://hackaday.com/2023/01/20/help-needed-on-thumb-image-rp2040-dma-hack-makes-another-cpu-core/)**
 
 ### Network Stack
 
-The network stack was actually very nicely handled for us by the W5500 chip,
+The network stack was nicely handled for us by the W5500 chip,
 which is what we use to add Ethernet capability to the RP2040. Communicating
 over SPI, it includes a hardwired TCP/IP stack, with 6 sockets.
 
-All we need to do is write a driver to access this functionality, and abstract away details such as socket creation, buffer management, configuration, etc. I won't really be going into much detail about this driver, but you can read the datasheet for the chip [here](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Shields/W5500_datasheet_v1.0.2_1.pdf)
+All we need to do is write a driver to access this functionality, and abstract away details such as socket creation, buffer management, configuration, etc. I won't be going into much detail about this driver, but you can read the datasheet for the chip [here](https://cdn.sparkfun.com/datasheets/Dev/Arduino/Shields/W5500_datasheet_v1.0.2_1.pdf)
 
 ### Communication Protocols
 
@@ -114,7 +114,7 @@ All we need to do is write a driver to access this functionality, and abstract a
 _This is where the fun begins_
 
 At the launch site, the rocket, the GSE system (Black Cat Launch System, BCLS),
-and the launch operators' computers are all connected to each other over
+and the launch operators' computers are all connected over
 Ethernet.
 
 While the rocket is on the ground, there are two primary requirements for
@@ -224,7 +224,7 @@ A full CommandNet exchange would take place as follows:
 +---------+             +---------+
 ```
 
-The way the network at the launch site is setup, it's possible that
+The way the network at the launch site is set up, it's possible that
 people outside our team can plug into the network and send packets to the
 rocket - this isn't a problem we expect to encounter, but it's one we have to be
 ready for anyway.
@@ -238,26 +238,26 @@ know where a transmission ends by just checking if there's an endline.
 
 ### EMU State Machine
 
-The state machine is basically a failsafe method of performing launch control.
+The state machine is a failsafe method of performing launch control.
 Interacting with this state machine is the primary objective of CommandNet. It
 looks like this:
 
 ![EMU State Machine](/assets/emu-state-machine.png)
 
-Most of the time prior to launch will be spent in the Countdown - Go/No Go loop.
+Most of the time launch will be spent in the Countdown - Go/No Go loop.
 
 At preset points in the countdown, the launch operators will need to issue a
-Go/No Go to the current poll. If the poll either times out, or a "No Go" is
+Go/No Go to the current poll. If the poll either times out or a "No Go" is
 issued, the countdown is placed on hold until manual intervention.
 
-The countdown also automatically goes on hold if there's an off nominal
+The countdown also automatically goes on hold if there's an off-nominal
 situation, whatever that may be.
 
 If all goes well, and the final poll is answered, the state machine goes into
 autosequence at a set point in the countdown (T-auto).
 
 In this case, if communication with the rocket is lost before autosequence
-start, the rocket will not launch.
+starts, the rocket will not launch.
 
 The autosequence phase contains the ignition sequence. A manual abort can be
 issued during the autosequence, which would place the vehicle in a safe state.
@@ -281,7 +281,7 @@ board. The RP2040 has a UF2 ROM bootloader, so when it's RESET with BOOTSEL held
 active, it shows up as a USB storage device, and the firmware file can be copied
 into it to write it to device flash.
 
-The flight software can be compiled either on the Pi itself, or copied over.
+The flight software can be compiled either on the Pi itself or copied over.
 
 The Pi is added to a [tailscale](https://tailscale.com/) network, so it can be
 securely accessed anywhere there's internet.
