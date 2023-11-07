@@ -41,7 +41,7 @@ export default function Home({ allPosts }: Props) {
   return (
     <>
       <Head>
-        <title>Sagar's Portfolio</title>
+        <title>Sagar Patil</title>
       </Head>
       <Layout>
         <div className="flex flex-col gap-4">
