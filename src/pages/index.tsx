@@ -69,9 +69,9 @@ export default function Home({ allPosts }: Props) {
 }
 
 function WhoAmI() {
-  const bday = new Date(2003, 12, 30);
-  const ageDate = new Date(Date.now() - bday.getTime());
-  const age = Math.floor(ageDate.getTime() / 3.154e10);
+  const bday = new Date("2003-12-30");
+  const ageInMs = Date.now() - bday.getTime();
+  const age = Math.floor(ageInMs / 31556952000);
 
   return (
     <Fieldset title="whoami">
