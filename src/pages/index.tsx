@@ -80,7 +80,7 @@ function WhoAmI() {
           Hi there! I am a {age} y/o student at Purdue University majoring in
           Computer Science. I like rockets and computers. Some of my hobbies
           include photography, reading sci-fi, 3d printing, software defined
-          radio, and climbing (don't ask me my grade)
+          radio, and climbing
         </p>
         <p>
           Here's a photo of me in front of an SR-71 (and Space Shuttle
