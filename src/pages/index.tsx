@@ -128,8 +128,13 @@ function Coursework() {
           <li>CS 35400 - Operating Systems</li>
           <li>CS 37300 - Data Mining & Machine Learning</li>
           <li>CS 38100 - Intro to Analysis of Algorithms</li>
-          <li>STAT 512 - Applied Regression Analysis</li>
-          <li>COM 21700 - Science Writing and Presentation</li>
+          <li>STAT 51200 - Applied Regression Analysis</li>
+        </ul>
+        <h4>Spring 2024</h4>
+        <ul>
+          <li>CS 35200 - Compilers: Principles and Practice</li>
+          <li>CS 45600 - Programming Languages</li>
+          <li>STAT 41600 - Probability</li>
         </ul>
       </Article>
     </Fieldset>
