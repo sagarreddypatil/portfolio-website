@@ -3,8 +3,9 @@ import Fieldset from "@/components/fieldset";
 import Layout from "@/components/layout";
 import { PostType, getAllPosts, getPostBySlug } from "@/lib/api";
 import Head from "next/head";
-import { remark } from "remark";
-import html from "remark-html";
+import ReactMarkdown from "react-markdown";
+// import { remark } from "remark";
+// import html from "remark-html";
 
 type Props = {
   post: PostType;
@@ -29,26 +30,25 @@ export default function Post({ post }: Props) {
             <div className="h-4" />
           </Article>
           <img src={post.coverImage} className="mb-4"></img>
-          <article
-            className={articleClasses}
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <article className={articleClasses}>
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </article>
         </Fieldset>
       </Layout>
     </>
   );
 }
 
-async function markdownToHtml(markdown: string) {
-  const result = await remark()
-    .use(html, {
-      allowDangerousHtml: true,
-      allowDangerousCharacters: true,
-      sanitize: false,
-    })
-    .process(markdown);
-  return result.toString();
-}
+// async function markdownToHtml(markdown: string) {
+//   const result = await remark()
+//     .use(html, {
+//       allowDangerousHtml: true,
+//       allowDangerousCharacters: true,
+//       sanitize: false,
+//     })
+//     .process(markdown);
+//   return result.toString();
+// }
 
 type Params = {
   params: {
@@ -58,7 +58,8 @@ type Params = {
 
 export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug.join("/"));
-  const content = await markdownToHtml(post.content || "");
+  // const content = await markdownToHtml(post.content || "");
+  const content = post.content;
 
   return {
     props: {

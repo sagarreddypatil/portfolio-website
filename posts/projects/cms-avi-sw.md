@@ -7,8 +7,8 @@ order: -1
 
 **A photo of the Bang Bang Boom Box (B⁴), our hardware testing apparatus**
 
-**Take a look at [the avionics system design](/posts/cms-avi-hw) and
-[PSPieChart](/posts/pspiechart) posts to get context on this document.**
+**Take a look at [the avionics system design](/projects/cms-avi-hw) and
+[PSPieChart](/projects/pspiechart) posts to get context on this document.**
 
 This document is a direct continuation of Avionics System Design and details information about flight and GSE software for Purdue Space Program Liquid's next rocket, the CraterMaker Special.
 
@@ -299,7 +299,7 @@ These are the ones with development underway
 
 ### PSPieChart
 
-[See this post](http://localhost:3000/posts/pspiechart)
+[See this post](/projects/pspiechart)
 
 ### SensorNet Server
 

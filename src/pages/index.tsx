@@ -15,7 +15,7 @@ type CardProps = {
 
 function Card(props: CardProps) {
   return (
-    <Link href={`/posts/${props.slug}`}>
+    <Link href={`/${props.slug}`}>
       <div className="rounded-none outline outline-1 outline-black dark:outline-gray-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black overflow-hidden me-[6px] mb-[6px] shadow-[5px_5px_0px_1px_rgba(0,0,0,0.5)] dark:shadow-[5px_5px_0px_1px_rgba(255,255,255,0.25)]">
         <div className="w-full">
           <img
