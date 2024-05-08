@@ -6,6 +6,10 @@ import Fieldset from "@/components/fieldset";
 import Head from "next/head";
 import Article from "@/components/article";
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 type CardProps = {
   slug: string;
   coverSrc: string;

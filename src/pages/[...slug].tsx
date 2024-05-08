@@ -4,8 +4,10 @@ import Layout from "@/components/layout";
 import { PostType, getAllPosts, getPostBySlug } from "@/lib/api";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
-// import { remark } from "remark";
-// import html from "remark-html";
+
+export const config = {
+  unstable_runtimeJS: false,
+};
 
 type Props = {
   post: PostType;

@@ -5,18 +5,6 @@ import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import Link from "next/link";
 import Fieldset from "./fieldset";
 
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-});
-
 type Props = {
   children: React.ReactNode;
 };
@@ -24,7 +12,7 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <main
-      className={`flex min-h-screen flex-col max-w-5xl mx-auto px-4 py-4 sm:py-8 leading-5 dark:bg-black dark:text-white ${ibmPlexSans.variable} ${ibmPlexMono.variable} font-sans`}
+      className={`flex min-h-screen flex-col max-w-5xl mx-auto px-4 py-4 sm:py-8 leading-5 dark:bg-black dark:text-white font-sans`}
     >
       <div className="flex justify-between flex-wrap">
         <Link href="/">

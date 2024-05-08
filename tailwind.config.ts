@@ -10,8 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-ibm-plex-sans)"],
-        mono: ["var(--font-ibm-plex-mono)"],
+        // sans: ["var(--font-ibm-plex-sans)"],
+        // mono: ["var(--font-ibm-plex-mono)"],
+        sans: ["IBM Plex Sans", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
       },
     },
   },
