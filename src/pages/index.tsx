@@ -65,6 +65,7 @@ export default function Home({ allPosts }: Props) {
               })}
             </div>
           </Fieldset>
+          <Friends />
           <Coursework />
         </div>
       </Layout>
@@ -107,14 +108,12 @@ function Coursework() {
         <h4>Fall 2021</h4>
         <ul>
           <li>CS 18000 - Problem Solving and Object-Oriented Programming</li>
-          <li>CS 19300 - Tools</li>
           <li>MA 26100 - Multivariate Calculus</li>
         </ul>
         <h4>Spring 2021</h4>
         <ul>
           <li>CS 18200 - Discrete Mathamatics</li>
           <li>CS 24000 - Programming in C</li>
-          <li>MA 26500 - Linear Algebra</li>
         </ul>
         <h4>Fall 2022</h4>
         <ul>
@@ -125,20 +124,37 @@ function Coursework() {
         <ul>
           <li>CS 25200 - Systems Programming</li>
           <li>CS 47100 - Intro to Artificial Intelligence</li>
-          <li>STAT 51100 - Statistical Methods</li>
         </ul>
         <h4>Fall 2023</h4>
         <ul>
-          <li>CS 35400 - Operating Systems</li>
           <li>CS 37300 - Data Mining & Machine Learning</li>
           <li>CS 38100 - Intro to Analysis of Algorithms</li>
-          <li>STAT 51200 - Applied Regression Analysis</li>
         </ul>
         <h4>Spring 2024</h4>
         <ul>
           <li>CS 35200 - Compilers: Principles and Practice</li>
+          <li>CS 35400 - Operating Systems</li>
           <li>CS 45600 - Programming Languages</li>
-          <li>STAT 41600 - Probability</li>
+        </ul>
+      </Article>
+    </Fieldset>
+  );
+}
+
+function Friends() {
+  return (
+    <Fieldset title="~/friends.md">
+      <Article>
+        Cool friends working on cool stuff
+        <ul>
+          <li><a href="https://arefmalek.com/">Aref Malek</a></li>
+          <li><a href="https://coleroberts.dev/index">Cole Roberts</a></li>
+          <li><a href="https://harmya.me/">Harmya Bhatt</a></li>
+          <li><a href="https://bhavesh.dev/about">Bhavesh</a></li>
+          <li><a href="https://www.zietek.dev/">Jacob Zietek</a></li>
+          <li><a href="https://jinen.setpal.net/">Jinen Setpal</a></li>
+          <li><a href="https://mikail-khan.com/">Mikail Khan</a></li>
+          <li><a href="https://wade.dev/">Nicholas Wade</a></li>
         </ul>
       </Article>
     </Fieldset>
