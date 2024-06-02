@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% from "components/fieldset.html" import fieldset %}
+
+{% block content %}
+  <div class="flex flex-col gap-4">
+    <!-- <WhoAmI /> -->
+    {% call fieldset("whoami") %}
+      <article className="flex flex-col gap-3 text-lg">
+        <p>
+          Hi there! I am a <span id="age"></span> y/o student at Purdue
+          University majoring in Computer Science. I like rockets and computers.
+          Some of my hobbies include photography, reading sci-fi, 3d printing,
+          software defined radio, and climbing
+        </p>
+        <script>
+          const bday = new Date("2003-12-30");
+          const ageInMs = Date.now() - bday.getTime();
+          const age = Math.floor(ageInMs / 31556952000);
+          document.getElementById("age").innerText = age;
+        </script>
+        <p>
+          Here's a photo of me in front of an SR-71 (and Space Shuttle
+          Discovery)
+        </p>
+        <img
+          src="/assets/me.jpg"
+          alt="me in front of an sr-71"
+          className="h-[350px] object-cover"
+        />
+      </article>
+    {% endcall %}
+    {% call fieldset("ls ~/projects") %}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- {allPosts.map((post) => { return (
+        <Card
+          slug="{post.slug}"
+          title="{post.title}"
+          summary="{post.summary}"
+          coverSrc="{post.coverImage}"
+          key="{post.slug}"
+        />
+        ); })} -->
+      </div>
+    {% endcall %}
+    <!-- <Friends />
+    <Coursework /> -->
+  </div>
+{% endblock %}
