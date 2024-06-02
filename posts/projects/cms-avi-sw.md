@@ -17,7 +17,7 @@ This document is a direct continuation of Avionics System Design and details inf
 ### Development Environment
 
 The RP2040 has a very well-documented and easy-to-use SDK written in C.
-Everything can be configured to CMake.
+Everything can be configured through CMake.
 
 The first step to start developing software for the rocket was determining the
 source tree organization and writing a build system.
@@ -25,7 +25,7 @@ source tree organization and writing a build system.
 I decided on using a single `CMakeLists.txt` at the project root so that it'd be
 easier for new members to work without worrying too much about the build system.
 
-The build process also includes `ccache` for insanely clean builds.
+The build process also includes `ccache` for insanely fast clean builds.
 
 This is how the source code is organized
 
@@ -70,7 +70,7 @@ builds (with ccache cleared) in under 15 seconds.
 The main peripherals on this rocket are ADCs, storage devices, radios, Ethernet
 (more on this later), and digital output for pyro channels.
 
-Digital outputs are easy enough, pico-sdk has all the code infrastructure
+Digital outputs are easy enough, pico-sdk has all the infrastructure
 needed for that.
 
 One of the requirements we have for peripherals on the rocket, which most of our
@@ -83,7 +83,7 @@ at a specified rate.
 The process of writing the drivers themselves is mostly straightforward -
 implement the protocols that the chip manufacturers specify in the datasheet.
 The first version of the driver is always a fully synchronous version, i.e., all
-communication with the device is commanded by the main thread. This makes it
+communication with the device is commanded by the main thread. This made it
 easy to meet deadlines when it comes to upcoming tests.
 
 The next step is implementing interrupt-driven I/O. For our purposes, this isn't
