@@ -1,0 +1,21 @@
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+  {% for post in posts %}
+    <a href="{{ post.href }}">
+      <div
+        class="rounded-none outline outline-1 outline-black dark:outline-gray-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black overflow-hidden me-[6px] mb-[6px] shadow-[5px_5px_0px_1px_rgba(0,0,0,0.5)] dark:shadow-[5px_5px_0px_1px_rgba(255,255,255,0.25)]"
+      >
+        <div class="w-full">
+          <img
+            class="object-cover object-left-top w-full aspect-[3/2]"
+            src="{{ post.coverImage }}"
+            alt="Image for {{ post.title }}"
+          />
+        </div>
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 leading-6">{{ post.title }}</div>
+          <p>{{ post.summary }}</p>
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>

@@ -1,0 +1,10 @@
+{% macro fieldset(title) %}
+  <fieldset
+    class="border border-solid border-black dark:border-white min-w-0 p-4 pt-2"
+  >
+    <legend>
+      <span class="text-lg mx-2 font-mono italic">{{ title }}</span>
+    </legend>
+    {{ caller() }}
+  </fieldset>
+{% endmacro %}
