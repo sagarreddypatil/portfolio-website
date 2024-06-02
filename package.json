@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.2",
@@ -11,8 +12,8 @@
   "scripts": {
     "watch:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
     "build:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css",
-    "build:html": "python src/build.py --output dist",
     "watch:html": "nodemon --watch src -e '*' --exec 'python src/build.py --output dist'",
+    "build:html": "python src/build.py --output dist",
     "flask-dev": "python -m flask --app src/dev-server.py --debug run --port 5000",
     "build": "yarn build:html && yarn build:tailwind",
     "dev": "concurrently \"yarn watch:html\" \"yarn watch:tailwind\" \"yarn flask-dev\""

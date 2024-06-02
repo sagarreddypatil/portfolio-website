@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/index.css" />
   <title>{{ title }}</title>
 </head>
-<body>
+<body class="">
   <main
     class="flex min-h-screen flex-col max-w-5xl mx-auto px-4 py-4 sm:py-8 leading-5 dark:bg-black dark:text-white font-sans"
   >
@@ -23,26 +23,18 @@
       <div
         class="flex flex-col sm:flex-row justify-between gap-2 align-middle items-center my-1"
       >
-        {%
-          call button("https://linkedin.com/in/patilsr", "w-32
-          bg-[#0077b5] text-white")
-        %}
+        {% call button("https://linkedin.com/in/patilsr", "w-32 bg-[#0077b5] text-white") %}
           <ion-icon name="logo-linkedin"></ion-icon>
           <span class="ms-1">LinkedIn</span>
         {% endcall %}
         {%
           call
-          button("https://github.com/sagarreddypatil", "w-32 bg-black
-          text-white")
+          button("https://github.com/sagarreddypatil", "w-32")
         %}
           <ion-icon name="logo-github"></ion-icon>
           <span class="ms-1">GitHub</span>
         {% endcall %}
-        {%
-          call button("/assets/resume.pdf", "w-32
-          bg-black text-white")
-        %}
-          <ion-icon name="document-text"></ion-icon>
+        {% call button("/assets/resume.pdf", "w-32") %}
           <span class="ms-1">Resume</span>
         {% endcall %}
       </div>

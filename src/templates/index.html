@@ -5,7 +5,7 @@
   <div class="flex flex-col gap-4">
     <!-- <WhoAmI /> -->
     {% call fieldset("whoami") %}
-      <article className="flex flex-col gap-3 text-lg">
+      <div class="flex flex-col gap-3 text-lg">
         <p>
           Hi there! I am a <span id="age"></span> y/o student at Purdue
           University majoring in Computer Science. I like rockets and computers.
@@ -25,24 +25,63 @@
         <img
           src="/assets/me.jpg"
           alt="me in front of an sr-71"
-          className="h-[350px] object-cover"
+          class="h-[350px] object-cover"
         />
-      </article>
-    {% endcall %}
-    {% call fieldset("ls ~/projects") %}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <!-- {allPosts.map((post) => { return (
-        <Card
-          slug="{post.slug}"
-          title="{post.title}"
-          summary="{post.summary}"
-          coverSrc="{post.coverImage}"
-          key="{post.slug}"
-        />
-        ); })} -->
       </div>
     {% endcall %}
-    <!-- <Friends />
-    <Coursework /> -->
+    {% call fieldset("ls ~/projects") %}
+      {{ lists["projects"]|safe }}
+    {% endcall %}
+    {% call fieldset("~/friends.md") %}
+      <article>
+        Cool friends working on cool stuff
+        <ul>
+          <li><a href="https://arefmalek.com/">Aref Malek</a></li>
+          <li><a href="https://coleroberts.dev/index">Cole Roberts</a></li>
+          <li><a href="https://harmya.me/">Harmya Bhatt</a></li>
+          <li><a href="https://bhavesh.dev/about">Bhavesh</a></li>
+          <li><a href="https://www.zietek.dev/">Jacob Zietek</a></li>
+          <li><a href="https://jinen.setpal.net/">Jinen Setpal</a></li>
+          <li><a href="https://mikail-khan.com/">Mikail Khan</a></li>
+          <li><a href="https://wade.dev/">Nicholas Wade</a></li>
+        </ul>
+      </article>
+    {% endcall %}
+    <!-- <Coursework /> -->
+    {% call fieldset("~/courses.md") %}
+      <article>
+        <h4>Fall 2021</h4>
+        <ul>
+          <li>CS 18000 - Problem Solving and Object-Oriented Programming</li>
+          <li>MA 26100 - Multivariate Calculus</li>
+        </ul>
+        <h4>Spring 2021</h4>
+        <ul>
+          <li>CS 18200 - Discrete Mathamatics</li>
+          <li>CS 24000 - Programming in C</li>
+        </ul>
+        <h4>Fall 2022</h4>
+        <ul>
+          <li>CS 25000 - Computer Architecture</li>
+          <li>CS 25100 - Data Structures and Algorithms</li>
+        </ul>
+        <h4>Spring 2022</h4>
+        <ul>
+          <li>CS 25200 - Systems Programming</li>
+          <li>CS 47100 - Intro to Artificial Intelligence</li>
+        </ul>
+        <h4>Fall 2023</h4>
+        <ul>
+          <li>CS 37300 - Data Mining & Machine Learning</li>
+          <li>CS 38100 - Intro to Analysis of Algorithms</li>
+        </ul>
+        <h4>Spring 2024</h4>
+        <ul>
+          <li>CS 35200 - Compilers: Principles and Practice</li>
+          <li>CS 35400 - Operating Systems</li>
+          <li>CS 45600 - Programming Languages</li>
+        </ul>
+      </article>
+    {% endcall %}
   </div>
 {% endblock %}

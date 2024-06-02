@@ -41,3 +41,7 @@ h3 {
 .prose > ul > li {
   @apply !my-0;
 }
+
+article {
+  @apply prose md:prose-lg lg:prose-xl max-w-none prose-neutral dark:prose-invert;
+}

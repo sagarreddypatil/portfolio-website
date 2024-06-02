@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% from "components/fieldset.html" import fieldset %}
+
+{% block content %}
+  {% call fieldset("cat ~/" + post.slug) %}
+    <article>
+      <h1 className="!mb-1">{{ post.title }}</h1>
+      <em>{{ post.summary }}</em>
+      <div className="h-4" />
+    </article>
+    <img src="{{ post.coverImage }}" className="mb-4" />
+    <article>
+      {{ post.content|safe }}
+    </article>
+  {% endcall %}
+{% endblock %}
