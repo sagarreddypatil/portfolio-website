@@ -1,3 +1,5 @@
+name = "Sagar Patil"
+
 import os
 from shutil import rmtree
 import argparse
@@ -54,7 +56,7 @@ def get_post(folder, file):
 
 def render_post(folder, post):
     template = env.get_template(f"posts/{folder}/page.html")
-    return template.render(post=post)
+    return template.render(post=post, title=f"{post['title']} | {name}", name=name)
 
 
 def render_post_list(folder, posts):
@@ -78,4 +80,4 @@ for post_folder in post_folders:
 
 index = env.get_template("index.html")
 
-write_output(index.render(lists=lists), "index.html")
+write_output(index.render(lists=lists, name=name, title=name), "index.html")
