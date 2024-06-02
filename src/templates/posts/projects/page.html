@@ -2,13 +2,13 @@
 {% from "components/fieldset.html" import fieldset %}
 
 {% block content %}
-  {% call fieldset("cat ~/" + post.slug) %}
+  {% call fieldset("cat ~" + post.href) %}
     <article>
-      <h1 className="!mb-1">{{ post.title }}</h1>
+      <h1 class="!mb-1">{{ post.title }}</h1>
       <em>{{ post.summary }}</em>
-      <div className="h-4" />
+      <div class="h-4" />
     </article>
-    <img src="{{ post.coverImage }}" className="mb-4" />
+    <img src="{{ post.coverImage }}" class="mb-4" />
     <article>
       {{ post.content|safe }}
     </article>

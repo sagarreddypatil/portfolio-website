@@ -44,7 +44,7 @@ def get_post(folder, file):
 
     obj.content = html
     obj['slug'] = file.replace(".md", "")
-    obj['href'] = f"{folder}/{obj['slug']}.html"
+    obj['href'] = f"/{folder}/{obj['slug']}"
 
     if 'order' not in obj:
         obj['order'] = 0

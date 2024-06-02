@@ -12,10 +12,14 @@
   "scripts": {
     "watch:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
     "build:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css",
+
     "watch:html": "nodemon --watch src -e '*' --exec 'python src/build.py --output dist'",
     "build:html": "python src/build.py --output dist",
+
     "flask-dev": "python -m flask --app src/dev-server.py --debug run --port 5000",
-    "build": "yarn build:html && yarn build:tailwind",
-    "dev": "concurrently \"yarn watch:html\" \"yarn watch:tailwind\" \"yarn flask-dev\""
+    "dev": "concurrently \"yarn watch:html\" \"yarn watch:tailwind\" \"yarn flask-dev\"",
+
+    "build:static": "cp -r public/* dist/",
+    "build": "yarn build:html && yarn build:tailwind && yarn build:static"
   }
 }
