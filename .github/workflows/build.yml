@@ -28,7 +28,7 @@ jobs:
 
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libwebp
+          packages: webp
 
       - name: Setup Node
         uses: actions/setup-node@v3
