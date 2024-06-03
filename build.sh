@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 tw() {
     ./node_modules/.bin/tailwindcss -i ./src/index.css -o ./dist/index.css --minify

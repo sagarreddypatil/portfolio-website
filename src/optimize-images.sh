@@ -1,4 +1,4 @@
-#/usr/bin/env sh
+#/bin/sh
 
 # convert all images to webp
 # find and replace image urls in html files
