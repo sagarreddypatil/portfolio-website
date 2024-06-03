@@ -1,18 +1,18 @@
 #!/bin/sh
 
 tw() {
-    echo "Building Tailwind CSS to $(pwd)/dist/index.css"
+    echo "Building Tailwind CSS to dist/index.css"
     ./node_modules/.bin/tailwindcss -i ./src/index.css -o ./dist/index.css --minify
 }
 
 html() {
-    echo "Building HTML files to $(pwd)/dist"
+    echo "Building HTML files to dist"
     python src/build.py --output dist --no-clean
 }
 
 static() {
-    echo "Copying files from $(pwd)/public to $(pwd)/dist"
-    cp -r public/* dist/
+    echo "Copying from" public/* "to dist/"
+    cp -r public/* dist
 }
 
 opt_imgs() {
