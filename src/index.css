@@ -45,3 +45,14 @@ h3 {
 article {
   @apply prose md:prose-lg lg:prose-xl max-w-none prose-neutral dark:prose-invert;
 }
+
+.icon {
+  width: 14px;
+  height: 14px;
+
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+
+  background-color: currentColor;
+}
