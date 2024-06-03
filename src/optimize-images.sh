@@ -9,6 +9,7 @@ basenames=$(echo $imgs | xargs -n1 basename)
 # convert images to webp
 for img in $imgs; do
     anon() {
+        echo "Converting $img to $img.webp"
         cwebp -q 80 $img -o $img.webp -quiet
         rm $img
     }
