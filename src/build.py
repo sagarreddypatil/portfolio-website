@@ -58,7 +58,7 @@ def get_post(folder, file):
 
 def render_post(folder, post):
     template = env.get_template(f"posts/{folder}/page.html")
-    return template.render(post=post, title=f"{post['title']} | {name}", name=name)
+    return template.render(post=post, title=f"{name} | {post['title']}", name=name)
 
 
 def render_post_list(folder, posts):

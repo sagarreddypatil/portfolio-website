@@ -4,8 +4,8 @@
 {% block content %}
   {% call fieldset("cat ~" + post.href) %}
     <article>
-      <h1 class="!mb-1">{{ post.title }}</h1>
-      <em>{{ post.summary }}</em>
+      <h2 class="m-0 mb-1 text-4xl">{{ post.title }}</h2>
+      <h3 class="italic text-xl m-0 font-normal">{{ post.summary }}</h3>
       <div class="h-4" />
     </article>
     <img src="{{ post.coverImage }}" class="mb-4" />
