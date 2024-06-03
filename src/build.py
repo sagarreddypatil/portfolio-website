@@ -9,6 +9,7 @@ import mistune, frontmatter
 
 parser = argparse.ArgumentParser(description="Build the website")
 parser.add_argument("--output", help="Output directory", default="dist")
+parser.add_argument("--no-clean", help="Don't clean the output directory", action="store_true")
 
 args = parser.parse_args()
 
@@ -19,15 +20,16 @@ env = Environment(
     autoescape=select_autoescape(["html"]),
 )
 
-# delete everything inside the output directory
-for root, dirs, files in os.walk(args.output):
-    for file in files:
-        if file == "index.css":
-            continue
-        os.remove(os.path.join(root, file))
+if not args.no_clean:
+    # delete everything inside the output directory
+    for root, dirs, files in os.walk(args.output):
+        for file in files:
+            if file == "index.css":
+                continue
+            os.remove(os.path.join(root, file))
 
-    for dir in dirs:
-        rmtree(os.path.join(root, dir))
+        for dir in dirs:
+            rmtree(os.path.join(root, dir))
 
 
 def write_output(content, *path):
