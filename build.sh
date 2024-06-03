@@ -11,8 +11,10 @@ html() {
 }
 
 static() {
-    echo "Copying from" public/* "to dist/"
-    cp -r public/* dist
+    for ent in public/*; do
+        echo "Copying $ent to dist/${ent##*/}"
+        cp -r $ent dist/${ent##*/}
+    done
 }
 
 opt_imgs() {
@@ -29,6 +31,8 @@ html_static() {
     wait $hpid $spid
     opt_imgs &
 }
+
+rm -rf dist && mkdir dist
 
 tw &
 html_static &
