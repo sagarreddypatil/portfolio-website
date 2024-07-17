@@ -1,6 +1,9 @@
-name = "Sagar Patil"
+first_name = "Sagar"
+last_name = "Patil"
+name = f"{first_name} {last_name}"
 domain = "sagarpatil.me"
-twitter_username = "@sagarreddypatil"
+generic_username = "sagarreddypatil"
+twitter_username = f"@{generic_username}"
 url = f"https://{domain}"  # for opengraph
 
 import os
@@ -172,7 +175,15 @@ seo_common = {
     "image": urljoin(url, "/assets/me.jpg"),
 }
 
-og = og_tags({**seo_common, "type": "website"})
+og = og_tags(
+    {
+        **seo_common,
+        "type": "website",
+        "profile:first_name": first_name,
+        "profile:last_name": last_name,
+        "profile:username": generic_username,
+    }
+)
 twitter = twitter_tags({**seo_common, "card": "summary"})
 seotags = og + twitter
 
