@@ -30,23 +30,23 @@ jobs:
         with:
           packages: webp
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "22"
-          cache: "yarn"
-
+      - name: Install poetry
+        run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: "poetry"
       - run: poetry install
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+          cache: "yarn"
+      - run: yarn install
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
-      - name: Install yarn dependencies
-        run: yarn install
 
       - name: Build
         run: yarn build
