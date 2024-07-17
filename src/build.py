@@ -1,15 +1,25 @@
 name = "Sagar Patil"
+url = "https://sagarpatil.me"  # for opengraph
 
 import os
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 from shutil import rmtree
 import argparse
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import mistune, frontmatter
 
+
+def bs(content):
+    return BeautifulSoup(content, "html.parser")
+
+
 parser = argparse.ArgumentParser(description="Build the website")
 parser.add_argument("--output", help="Output directory", default="dist")
-parser.add_argument("--no-clean", help="Don't clean the output directory", action="store_true")
+parser.add_argument(
+    "--no-clean", help="Don't clean the output directory", action="store_true"
+)
 
 args = parser.parse_args()
 
@@ -47,18 +57,55 @@ def get_post(folder, file):
     html = mistune.html(obj.content)
 
     obj.content = html
-    obj['slug'] = file.replace(".md", "")
-    obj['href'] = f"/{folder}/{obj['slug']}"
+    obj["slug"] = file.replace(".md", "")
+    obj["href"] = f"/{folder}/{obj['slug']}"
 
-    if 'order' not in obj:
-        obj['order'] = 0
+    if "order" not in obj:
+        obj["order"] = 0
 
     return obj
 
 
+def og_item(prop, content=None, location=None):
+    assert (content is None) ^ (
+        location is None
+    ), "content xor location should be provided"
+
+    if content is not None:
+        return f'<meta property="og:{prop}" content="{content}">'
+
+    if location is not None:
+        item_url = urljoin(url, location)
+        return f'<meta property="og:{prop}" content="{item_url}">'
+
+
+def post_opengraph(folder, post):
+    items = []
+    items.append(og_item("url", location=f"/{folder}/{post['slug']}.html"))
+
+    if "title" in post:
+        items.append(og_item("title", content=post["title"]))
+
+    if "summary" in post:
+        items.append(og_item("description", content=post["summary"]))
+
+    if "coverImage" in post:
+        items.append(og_item("image", location=post["coverImage"]))
+
+    return items
+
+
 def render_post(folder, post):
     template = env.get_template(f"posts/{folder}/page.html")
-    return template.render(post=post, title=f"{name} | {post['title']}", name=name)
+    rendered = template.render(post=post, title=f"{name} | {post['title']}", name=name)
+
+    soup = bs(rendered)
+    og = post_opengraph(folder, post)
+
+    for item in og:
+        soup.head.append(bs(item))
+
+    return soup.renderContents().decode("utf-8")
 
 
 def render_post_list(folder, posts):
@@ -72,14 +119,15 @@ lists = {}
 for post_folder in post_folders:
     post_files = os.listdir(f"posts/{post_folder}")
     posts = [get_post(post_folder, f) for f in post_files]
-    posts = sorted(posts, key=lambda x: x['order'])
+    posts = sorted(posts, key=lambda x: x["order"])
 
     for post in posts:
-        write_output(render_post(post_folder, post), post_folder, f"{post['slug']}.html")
+        write_output(
+            render_post(post_folder, post), post_folder, f"{post['slug']}.html"
+        )
 
     lists[post_folder] = render_post_list(post_folder, posts)
 
 
 index = env.get_template("index.html")
-
 write_output(index.render(lists=lists, name=name, title=name), "index.html")
