@@ -81,7 +81,7 @@ def og_item(prop, content=None, location=None):
 
 def post_opengraph(folder, post):
     items = []
-    items.append(og_item("url", location=f"/{folder}/{post['slug']}.html"))
+    items.append(og_item("url", location=f"/{folder}/{post['slug']}"))
 
     if "title" in post:
         items.append(og_item("title", content=post["title"]))

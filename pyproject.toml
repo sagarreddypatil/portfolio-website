@@ -21,6 +21,9 @@ pyyaml = "^6.0.1"
 bs4 = "^0.0.2"
 
 
+[tool.poetry.group.dev.dependencies]
+flask = "^3.0.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

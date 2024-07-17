@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -m
 
@@ -14,7 +14,7 @@ tw() {
 
 html() {
     echo "Building HTML files to dist"
-    python src/build.py --output dist --no-clean || fail
+    poetry run python src/build.py --output dist --no-clean || fail
 }
 
 static() {
