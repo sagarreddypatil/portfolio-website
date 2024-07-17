@@ -1,5 +1,6 @@
 name = "Sagar Patil"
-url = "https://sagarpatil.me"  # for opengraph
+domain = "sagarpatil.me"
+url = f"https://{domain}"  # for opengraph
 
 import os
 from bs4 import BeautifulSoup
@@ -66,33 +67,57 @@ def get_post(folder, file):
     return obj
 
 
-def og_item(prop, content=None, location=None):
-    assert (content is None) ^ (
-        location is None
-    ), "content xor location should be provided"
+def og_tags(data: dict):
+    tags = []
+    for key, value in data.items():
+        tags.append(f'<meta property="og:{key}" content="{value}">')
 
-    if content is not None:
-        return f'<meta property="og:{prop}" content="{content}">'
-
-    if location is not None:
-        item_url = urljoin(url, location)
-        return f'<meta property="og:{prop}" content="{item_url}">'
+    return tags
 
 
-def post_opengraph(folder, post):
-    items = []
-    items.append(og_item("url", location=f"/{folder}/{post['slug']}"))
+def twitter_tags(data: dict):
+    lut = {
+        "card": "name",
+        "domain": "property",
+        "url": "property",
+        "title": "name",
+        "description": "name",
+        "image": "name",
+    }
+
+    tags = []
+    for key, value in data.items():
+        tags.append(f'<meta {lut[key]}="twitter:{key}" content="{value}">')
+
+    return tags
+
+
+def post_seotags(folder, post):
+    items_common = {
+        "url": urljoin(url, f"/{folder}/{post['slug']}"),
+    }
 
     if "title" in post:
-        items.append(og_item("title", content=post["title"]))
+        items_common["title"] = post["title"]
 
     if "summary" in post:
-        items.append(og_item("description", content=post["summary"]))
+        items_common["description"] = post["summary"]
 
     if "coverImage" in post:
-        items.append(og_item("image", location=post["coverImage"]))
+        items_common["image"] = urljoin(url, post["coverImage"])
 
-    return items
+    items_og = {
+        **items_common,
+        "type": "website",
+    }
+
+    items_twitter = {
+        **items_common,
+        "card": "summary_large_image",
+        "domain": domain,
+    }
+
+    return og_tags(items_og) + twitter_tags(items_twitter)
 
 
 def render_post(folder, post):
@@ -100,7 +125,7 @@ def render_post(folder, post):
     rendered = template.render(post=post, title=f"{name} | {post['title']}", name=name)
 
     soup = bs(rendered)
-    og = post_opengraph(folder, post)
+    og = post_seotags(folder, post)
 
     for item in og:
         soup.head.append(bs(item))
