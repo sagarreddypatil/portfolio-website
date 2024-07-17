@@ -178,7 +178,7 @@ seo_common = {
 og = og_tags(
     {
         **seo_common,
-        "type": "website",
+        "type": "profile",
         "profile:first_name": first_name,
         "profile:last_name": last_name,
         "profile:username": generic_username,
