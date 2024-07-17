@@ -1,3 +1,26 @@
 [tool.pyright]
 venvPath = "."
 venv = "venv"
+
+[tool.poetry]
+name = "portfolio-website"
+version = "0.1.0"
+description = "Static site generator for my portfolio website"
+authors = ["Sagar Patil <sagarreddypatil@gmail.com>"]
+license = "MIT"
+package-mode = false
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jinja2 = "^3.1.4"
+markupsafe = "^2.1.5"
+mistune = "^3.0.2"
+python-frontmatter = "^1.1.0"
+pyyaml = "^6.0.1"
+beautifulsoup4 = "^4.12.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
