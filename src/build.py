@@ -1,5 +1,6 @@
 name = "Sagar Patil"
 domain = "sagarpatil.me"
+twitter_username = "@sagarreddypatil"
 url = f"https://{domain}"  # for opengraph
 
 import os
@@ -75,6 +76,13 @@ def og_tags(data: dict):
     return tags
 
 
+twitter_tags_common = {
+    "domain": domain,
+    "card": "summary_large_image",
+    "site": twitter_username,
+}
+
+
 def twitter_tags(data: dict):
     lut = {
         "card": "name",
@@ -83,7 +91,10 @@ def twitter_tags(data: dict):
         "title": "name",
         "description": "name",
         "image": "name",
+        "site": "name",
     }
+
+    data = {**twitter_tags_common, **data}
 
     tags = []
     for key, value in data.items():
@@ -154,5 +165,21 @@ for post_folder in post_folders:
     lists[post_folder] = render_post_list(post_folder, posts)
 
 
+seo_common = {
+    "url": url,
+    "title": name,
+    "description": f"{name}'s personal website",
+    "image": urljoin(url, "/assets/me.jpg"),
+}
+
+og = og_tags({**seo_common, "type": "website"})
+twitter = twitter_tags({**seo_common, "card": "summary"})
+seotags = og + twitter
+
 index = env.get_template("index.html")
-write_output(index.render(lists=lists, name=name, title=name), "index.html")
+rendered = index.render(lists=lists, name=name, title=name)
+soup = bs(rendered)
+for item in seotags:
+    soup.head.append(bs(item))
+
+write_output(soup.renderContents().decode("utf-8"), "index.html")
