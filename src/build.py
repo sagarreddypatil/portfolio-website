@@ -98,7 +98,7 @@ def post_seotags(folder, post):
     }
 
     if "title" in post:
-        items_common["title"] = post["title"]
+        items_common["title"] = f"{name} | {post['title']}"
 
     if "summary" in post:
         items_common["description"] = post["summary"]
