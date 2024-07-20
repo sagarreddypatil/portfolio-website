@@ -38,11 +38,17 @@ jobs:
           cache: "poetry"
       - run: poetry install --only main
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
         with:
-          node-version: "22"
-          cache: "pnpm"
+          version: 9
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
       - run: pnpm install
 
       - name: Setup Pages
