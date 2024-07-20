@@ -9,7 +9,7 @@ fail() {
 
 tw() {
     echo "Building Tailwind CSS to dist/index.css"
-    ./node_modules/.bin/tailwindcss -i ./src/index.css -o ./dist/index.css --minify || fail
+    yarn tailwindcss -i ./src/index.css -o ./dist/index.css --minify || fail
 }
 
 html() {
