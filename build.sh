@@ -9,6 +9,7 @@ fail() {
 
 tw() {
     echo "Building Tailwind CSS to dist/index.css"
+    find . | grep tailwindcss
     ./node_modules/.bin/tailwindcss -i ./src/index.css -o ./dist/index.css --minify || fail
 }
 
