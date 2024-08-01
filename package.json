@@ -13,7 +13,7 @@
     "watch:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
     "watch:html": "nodemon --watch src -e '*' --exec 'poetry run python src/build.py --output dist'",
     "flask-dev": "poetry run python -m flask --app src/dev-server.py --debug run --port 5000",
-    "dev": "concurrently \"yarn watch:html\" \"yarn watch:tailwind\" \"yarn flask-dev\"",
+    "dev": "concurrently \"pnpm watch:html\" \"pnpm watch:tailwind\" \"pnpm flask-dev\"",
     "build": "./build.sh"
   }
 }
