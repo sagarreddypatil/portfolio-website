@@ -25,7 +25,8 @@ static() {
 }
 
 opt_imgs() {
-    ./src/optimize-images.sh || fail
+    # ./src/optimize-images.sh || fail
+    poetry run python src/optimize_images.py || fail
 }
 
 my_wait() {
@@ -59,6 +60,9 @@ html_static() {
     my_wait $hpid $spid
 
     opt_imgs &
+    opid=$!
+
+    my_wait $opid
 }
 
 rm -rf dist && mkdir dist
