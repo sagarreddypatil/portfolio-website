@@ -18,6 +18,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  permissions:
+    contents: read
+    deployments: write
+
   build:
     runs-on: ubuntu-latest
     steps:
