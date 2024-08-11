@@ -311,12 +311,32 @@ We selected NodeJS as the platform for this because it made it easy to integrate
 REST endpoints for setting and retrieving sensor calibrations, and to add
 WebSocket support so that packets can be forwarded to PSPieChart.
 
-We also decided on using InfluxDB as the timeseries database, because it's
-popular and fits our needs.
-
 This server includes endpoints to configure sensor ID to name mappings,
 calibrations, custom expressions for derived data, and retrieval of historical
 data.
+
+We initially picked InfluxDB to store the sensor data. However, we found that Influx
+sucks for this use case. The buffer to insert points had to be somewhat large without incurring
+a penalty on the insert throughput. Latency to retrieve past data was high.
+
+Given these challenges, I
+[decided to write my own "database"](https://github.com/sagarreddypatil/tsdb-cpp)
+(I'll probably make a separate post about this later). It's not ACID-compliant (yet) so it's not
+fair to call it a true database, but it got the job done.
+
+The concept is simple, just memory map a file to a petabyte sized chunk of the address space,
+and just insert points to the tail end of the file and have a counter in the file header. Add some
+basic file versioning capabilities, and you have a database.
+
+Now that I think about it, I think it could be considered atomic inserts are single threaded
+(per table) and there's a counter keeping track of inserted points which *should* ensure atomicity.
+
+In any case, this database automatically buffered writes through the magic of Linux's VFS, and
+the latency to retrieve past points is really low since it doesn't force you to do any sort
+of reduction, and can instead just sample points at a fixed time interval. One of the reasons
+Influx retrival was slow was becuase it forced you to apply some sort of reduction (`max`, `min`,
+`avg`, etc.)
+
 
 ### CommandNet Server
 
