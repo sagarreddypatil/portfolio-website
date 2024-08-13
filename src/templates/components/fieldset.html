@@ -1,8 +1,8 @@
 {% macro fieldset(title) %}
   <fieldset
-    class="border border-solid border-black dark:border-white min-w-0 p-4 pt-2"
+    class="border-t md:border border-solid border-black dark:border-white min-w-0 p-1 md:p-4 pt-2"
   >
-    <legend>
+    <legend class="ms-4 md:ms-0">
       <h6 class="text-lg mx-2 font-mono italic">{{ title }}</h6>
     </legend>
     {{ caller() }}

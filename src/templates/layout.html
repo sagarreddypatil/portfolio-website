@@ -32,7 +32,7 @@
   <main
     class="flex min-h-screen flex-col max-w-5xl mx-auto px-4 py-4 sm:py-8 leading-5 dark:bg-black dark:text-white font-sans"
   >
-    <div class="flex justify-between flex-wrap">
+    <div class="flex justify-between flex-wrap mb-2">
       <a href="/">
         <h1 class="font-mono text-2xl font-bold">{{ name }}</h1>
       </a>
@@ -55,7 +55,6 @@
         {% endcall %}
       </div>
     </div>
-    <hr class="my-2 border-black" />
     {% block content %}{% endblock %}
     <div class="h-3"></div>
     {% call fieldset("cat README.md") %}
