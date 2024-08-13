@@ -5,26 +5,28 @@
   <div class="flex flex-col gap-4">
     <!-- <WhoAmI /> -->
     {% call fieldset("whoami") %}
-      <div class="flex flex-col gap-3 text-lg">
-        <p>
-          Hi there! I am a <span id="age"></span> y/o student at Purdue
-          University majoring in Computer Science. I like programming languages,
-          compilers, firmware development, space exploration, and photography.
-
-          I also like working on projects and leaving them unfinished. Feel free
-          to nerd-snipe me with more ideas.
-        </p>
+      <div class="flex flex-row gap-3 text-lg">
+        <div class="flex flex-col gap-4">
+          <p>
+            Hi there! I am a <span id="age"></span> y/o student at Purdue
+            University majoring in Computer Science.
+          </p>
+          <p>
+            I like programming languages, compilers, firmware development, space
+            exploration, and photography.
+          </p>
+          <p>
+            I also like working on projects and leaving them unfinished. Feel
+            free to nerd-snipe me with more ideas.
+          </p>
+        </div>
+        <img src="/assets/me.jpg" alt="me" class="h-[350px] object-cover" />
         <script>
           const bday = new Date("2003-12-30");
           const ageInMs = Date.now() - bday.getTime();
           const age = Math.floor(ageInMs / 31556952000);
           document.getElementById("age").innerText = age;
         </script>
-        <img
-          src="/assets/me.jpg"
-          alt="me in front of an sr-71"
-          class="h-[350px] object-cover"
-        />
       </div>
     {% endcall %}
     {% call fieldset("ls ~/projects") %}
