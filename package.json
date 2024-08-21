@@ -14,6 +14,7 @@
     "watch:html": "nodemon --watch src -e '*' --exec 'poetry run python src/build.py --output dist'",
     "flask-dev": "poetry run python -m flask --app src/dev-server.py --debug run --port 5000",
     "dev": "concurrently \"pnpm watch:html\" \"pnpm watch:tailwind\" \"pnpm flask-dev\"",
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "preview": "npx serve dist/"
   }
 }
