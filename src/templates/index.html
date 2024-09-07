@@ -6,7 +6,7 @@
     <!-- <WhoAmI /> -->
     {% call fieldset("whoami") %}
       <div class="flex flex-col lg:flex-row gap-3 text-lg">
-        <div class="flex flex-col gap-4">
+        <article class="text-black text-lg prose-p:m-0 flex flex-col gap-4">
           <p>
             Hi there! I am a <span id="age"></span> y/o student at Purdue
             University majoring in Computer Science.
@@ -19,8 +19,13 @@
             I also like working on projects and leaving them unfinished. Feel
             free to nerd-snipe me with more ideas.
           </p>
-        </div>
-        <img src="/assets/me.jpg" alt="me" class="h-[350px] object-cover" />
+          <p>
+            Currently, I'm in Palo Alto interning at <a href="https://tesla.com">Tesla</a>. I've previously worked at
+            <a href="https://asylonrobotics.com/">Asylon</a> and <a href="https://www.agi.com/">AGI</a>,
+            and <a href="https://bloomberg.com/">Bloomberg</a>.
+          </p>
+        </article>
+        <img src="/assets/me-2.jpg" alt="me" class="h-[350px] object-cover" />
         <script>
           const bday = new Date("2003-12-30");
           const ageInMs = Date.now() - bday.getTime();
