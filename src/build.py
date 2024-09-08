@@ -56,10 +56,14 @@ def write_output(content, *path):
     with open(os.path.join(args.output, *path), "w") as f:
         f.write(content)
 
+make_html: mistune.Markdown = mistune.create_markdown(
+    escape=False,
+    plugins=["strikethrough", "footnotes", "table", "speedup", "math"],
+)
 
 def get_post(folder, file):
     obj = frontmatter.load(f"posts/{folder}/{file}")
-    html = mistune.html(obj.content)
+    html = make_html(obj.content)
 
     obj.content = html
     obj["slug"] = file.replace(".md", "")
