@@ -69,8 +69,10 @@ scenes are usually very complicated, consisting of many triangles, with BRDFs th
 by textures, and lights coming from many directions, or even from environment maps.
 
 Instead, we use Monte Carlo integration. This is the principle of monte carlo integration:
+
 $$
-\int f(x) dx \approx \frac{1}{N} \sum_{i=1}^{N} f(x_i)$$
+\int f(x) dx \approx \frac{1}{N} \sum_{i=1}^{N} f(x_i)
+$$
 
 To see how this works, let's consider the example of shading a pixel on a diffuse surface. The
 diffuse BSDF is literally just a constant: $f(\mathbf{x}, \omega_i, \omega_o) = \text{albedo}$.
