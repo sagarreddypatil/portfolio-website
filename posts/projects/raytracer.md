@@ -70,8 +70,7 @@ by textures, and lights coming from many directions, or even from environment ma
 
 Instead, we use Monte Carlo integration. This is the principle of monte carlo integration:
 $$
-\int f(x) dx = \int \frac{f(x)}{p(x)} p(x) dx \approx \frac{1}{N} \sum_{i=1}^{N} \frac{f(x_i)}{p(x_i)}, x_i \sim p(x)
-$$
+\int f(x) dx \approx \frac{1}{N} \sum_{i=1}^{N} f(x_i)$$
 
 Basically, this is saying that if we want to estimate the integral over some function $f(x)$, we can
 instead sample from some distribution $p(x)$, and then take the average of $f(x)/p(x)$ over all the
