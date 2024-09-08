@@ -72,10 +72,6 @@ Instead, we use Monte Carlo integration. This is the principle of monte carlo in
 $$
 \int f(x) dx \approx \frac{1}{N} \sum_{i=1}^{N} f(x_i)$$
 
-Basically, this is saying that if we want to estimate the integral over some function $f(x)$, we can
-instead sample from some distribution $p(x)$, and then take the average of $f(x)/p(x)$ over all the
-samples.
-
 To see how this works, let's consider the example of shading a pixel on a diffuse surface. The
 diffuse BSDF is literally just a constant: $f(\mathbf{x}, \omega_i, \omega_o) = \text{albedo}$.
 
