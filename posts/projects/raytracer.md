@@ -1,12 +1,12 @@
 ---
-title: "Raytracer in Rust"
-summary: "or how I learned a lot more about statistics than I thought I wanted to"
+title: "Ray tracer in Rust"
+summary: "or how to trick yourself into learning some statistics"
 coverImage: "/assets/raytrace.png"
 order: -2
 ---
 
 The cover image is rendered for 512 samples per pixel, 1280x720, and took about 2 minutes to render.
-It was tonemapped in Blender's compositor.
+It was tone-mapped in Blender's compositor.
 
 For comparison, here's the exact same scene rendered with Blender Cycles at 32 samples, 1280x720, 
 which took 11.46 seconds:
