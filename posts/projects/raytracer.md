@@ -150,6 +150,10 @@ this is standard practice, but from what I can tell, it's not unsound.
 There's still a problem, which is that we're not taking into account the distribution of light in
 the scene.
 
+And to prove I'm doing this correctly, here's a scene with both a diffuse and a mirror surface:
+
+![Diffuse and mirror](/assets/raytrace-mixed.png)
+
 ## Multiple Importance sampling
 
 This is what Blender does, allowing it to render images with far less noise at lower sample counts.
