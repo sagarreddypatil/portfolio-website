@@ -58,9 +58,7 @@ Foundation. Rocking two ARM Cortex M0+ cores and 264K of SRAM, this chip was a
 beast by no means. But for our purposes, it was sufficient, cheap, and very much
 in stock.
 
-One of my most emphasized factors for MCU selection was how easy it was to
-program. With Arduino's at a 10 and whatever NXP is doing at a 1, RP2040 scored
-a firm 11.
+One of my most emphasized factors for MCU selection was how fast it was to bring-up a dev env. With Arduinos at a 10 and whatever NXP is cooking at a 1, RP2040 scored a firm 9.5.
 
 The SDK for this chip was a single Git repo, and the entire build process could
 be managed with a short CMake script.
@@ -91,9 +89,7 @@ target_link_libraries(hello_world pico_stdlib)
 pico_add_extra_outputs(hello_world)
 ```
 
-To top it off, these chips were impossible to brick. I mean it. These
-chips come with a permanent bootloader ROM activated with an input pin, so no
-matter how much you mess up the firmware, you can always flash it again over USB.
+To top it off, these chips are _impossible to brick_. They have an on-die bootrom activated with an input pin, so no matter how much you mess up the firmware, you can always flash it again over USB, no SWD needed.
 
 ## ADC selection
 
@@ -105,20 +101,24 @@ settled on the ADS131M02. It
 - Didn't multiplex inputs
 - Delta Sigma sampling
 
-And this is all we were looking for in an ADC.
+And this is all we were looking for in an ADC. Honestly, 32ksps is overkill, we just wanted to sample at 1ksps without aliasing due to multiplexing a faster underlying ADC.
 
 ### Why I2C sucks
 
 My hatred for I2C was born after working with the BNO055, a cheap IMU that's
-commonly found in older smartphones and model rockets that land themselves.
+commonly found in older smartphones and [some model rockets that land themselves](https://bps.space/pages/avionics).
 
-While writing a driver for this chip, I discovered the lovely fact that I2C has
-a "feature" called clock stretching, where if a peripheral device needs the host
+While writing a driver for this chip, I discovered lovely I2C feature
+called clock stretching, where if a peripheral device needs the host
 to wait, it can pull the SCK line low until it's done.
 
 This excuse of a feature caused me several unnecessary hours of frustrating
 debugging, after which I vowed to never work with an I2C device again. And so
 far I haven't.
+
+Clock-stretching completely messes up program execution when running without
+an RTOS, and even with an RTOS, it hogs an entire I2C bus when that time
+could've been used for other I/O.
 
 ## Inter-board communication
 
@@ -156,9 +156,9 @@ SPI was very quickly dismissed, because even the thought of routing
 voltage-mode, single-ended, physical specification-less wires across the length
 of the rocket is the stuff of nightmares.
 
-CANBUS didn't have the bandwidth we needed.
+CAN bus didn't have the bandwidth we needed.
 
-During one of our workdays, I jokingly suggested that we use Ethernet across the rocket, and right after I said that, I realized we found the solution. Ethernet is going to be our mode of communication between the boards on the rocket, and to the ground.
+During one of our workdays, I jokingly suggested that we use Ethernet across the rocket, and then proceeded to convince Taylor to actaully implement this solution. Ethernet is going to be our mode of communication between the boards on the rocket, and to the ground.
 
 It's perfect, it ticks all the boxes
 
@@ -177,25 +177,22 @@ Oh boy, where do I even begin? At the solution - the RFD900.
 It's a 1W 900MHz (the unlicensed ISM band) radio, with an LOS range that can
 reach 60 km in some scenarios. We only needed 25.
 
-Arriving at this wasn't easy, and I wasn't set on the decision until an industry
-expert vouched for its effectiveness.
+Arriving at this wasn't easy, and I wasn't set on the decision until an
+industry expert vouched for its reliability in real-world products during
+a design review.
 
 I spent an unreasonable amount of time looking at sample implementations for
 chips like the TI CC1101, and shopping for >1W amplifiers that we could
-(presumably?) use with a HAM license.
+(presumably?) use with a HAM license
 
-The antenna design was also a whole can of worms. At some point, we were designing
-for the mid-airframe panels to be carbon fiber, a conductive material that
-severely impedes radio. We explored the use of getting PTFE copper-clad, etching
-a patch antenna on it, and heat-forming around the circumference of the vehicle.
-This wasn't our idea, we got it from [this
-paper](https://apps.dtic.mil/sti/pdfs/AD1105046.pdf), which contains this very
-promising sentence: "Destroy by any means possible to prevent disclosure of
-contents or reconstruction of the document. Do not return to the originator.", followed by "UNCLASSIFIED".
+The antenna design was also a whole can of worms. At some point, we were designing for the mid-airframe panels to be carbon fiber, a conductive material that severely impedes radio. We explored the use of getting PTFE copper-clad, etching a patch antenna on it, and heat-forming around the circumference of the vehicle. This wasn't our idea, we got it from [this
+declassified Army contractor paper](https://apps.dtic.mil/sti/pdfs/AD1105046.pdf)
 
 In the end, we decided it would be too impractical to do anything other than just change the mid-airframe panels to be E-glass, a class of fiberglass transparent to radio, and use an off-the-shelf monopole antenna.
 
-We also added LTE to the rocket, because we found that our launch side had reception when we were launching BZB.
+We also added LTE to the rocket, because we found that our launch side had reception when we were launching BZB. I also found out that cell phones
+at 40k feet get LTE when pointing the antenna towards the ground through
+an airplane window.
 
 ## System Design
 
