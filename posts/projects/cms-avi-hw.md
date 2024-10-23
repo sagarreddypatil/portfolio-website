@@ -192,7 +192,7 @@ In the end, we decided it would be too impractical to do anything other than jus
 
 We also added LTE to the rocket, because we found that our launch side had reception when we were launching BZB. I also found out that cell phones
 at 40k feet get LTE when pointing the antenna towards the ground through
-an airplane window.
+an airplane window. Good enough for backup telemetry.
 
 ## System Design
 
