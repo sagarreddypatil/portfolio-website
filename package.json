@@ -11,8 +11,8 @@
   },
   "scripts": {
     "watch:tailwind": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
-    "watch:html": "nodemon --watch src -e '*' --exec 'poetry run python src/build.py --output dist'",
-    "flask-dev": "poetry run python -m flask --app src/dev-server.py --debug run --port 5000",
+    "watch:html": "nodemon --watch src -e '*' --exec 'uv run python src/build.py --output dist'",
+    "flask-dev": "uv run python -m flask --app src/dev-server.py --debug run --port 8000",
     "dev": "concurrently \"pnpm watch:html\" \"pnpm watch:tailwind\" \"pnpm flask-dev\"",
     "build": "./build.sh",
     "preview": "npx serve dist/"

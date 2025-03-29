@@ -14,7 +14,7 @@ tw() {
 
 html() {
     echo "Building HTML files to dist"
-    poetry run python src/build.py --output dist --no-clean || fail
+    uv run python src/build.py --output dist --no-clean || fail
 }
 
 static() {
@@ -26,7 +26,7 @@ static() {
 
 opt_imgs() {
     # ./src/optimize-images.sh || fail
-    poetry run python src/optimize_images.py || fail
+    uv run python src/optimize_images.py || fail
 }
 
 my_wait() {

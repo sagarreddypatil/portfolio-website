@@ -1,11 +1,3 @@
-first_name = "Sagar"
-last_name = "Patil"
-name = f"{first_name} {last_name}"
-domain = "sagarpatil.me"
-generic_username = "sagarreddypatil"
-twitter_username = f"@{generic_username}"
-url = f"https://{domain}"  # for opengraph
-
 import os
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -14,6 +6,14 @@ import argparse
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import mistune, frontmatter
+
+first_name = "Sagar"
+last_name = "Patil"
+name = f"{first_name} {last_name}"
+domain = "sagarpatil.me"
+generic_username = "sagarreddypatil"
+twitter_username = f"@{generic_username}"
+url = f"https://{domain}"  # for opengraph
 
 
 def bs(content):
@@ -56,10 +56,12 @@ def write_output(content, *path):
     with open(os.path.join(args.output, *path), "w") as f:
         f.write(content)
 
+
 make_html: mistune.Markdown = mistune.create_markdown(
     escape=False,
     plugins=["strikethrough", "footnotes", "table", "speedup", "math"],
 )
+
 
 def get_post(folder, file):
     obj = frontmatter.load(f"posts/{folder}/{file}")
