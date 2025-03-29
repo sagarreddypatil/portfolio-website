@@ -24,12 +24,6 @@
           </p>
         </article>
         <img src="/assets/me-2.jpg" alt="me" class="h-[350px] object-cover" />
-        <script>
-          const bday = new Date("2003-12-30");
-          const ageInMs = Date.now() - bday.getTime();
-          const age = Math.floor(ageInMs / 31556952000);
-          document.getElementById("age").innerText = age;
-        </script>
       </div>
     {% endcall %}
     {% call fieldset("ls ~/projects") %}
