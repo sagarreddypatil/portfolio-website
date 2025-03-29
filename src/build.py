@@ -1,11 +1,12 @@
 import os
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin
-from shutil import rmtree
 import argparse
+from shutil import rmtree
+from urllib.parse import urljoin
 
+import mistune
+import frontmatter
+from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-import mistune, frontmatter
 
 first_name = "Sagar"
 last_name = "Patil"
@@ -174,11 +175,16 @@ for post_folder in post_folders:
     lists[post_folder] = render_post_list(post_folder, posts)
 
 
+def img_tag_rule(img_tag):
+    img_tag["decoding"] = "async"
+    img_tag["loading"] = "lazy"
+
+
 seo_common = {
     "url": url,
     "title": name,
     "description": f"{name}'s personal website",
-    "image": urljoin(url, "/assets/me.jpg"),
+    "image": urljoin(url, "/assets/me-2.jpg"),
 }
 
 og = og_tags(
@@ -190,6 +196,7 @@ og = og_tags(
         "profile:username": generic_username,
     }
 )
+
 twitter = twitter_tags({**seo_common, "card": "summary"})
 seotags = og + twitter
 
@@ -198,5 +205,8 @@ rendered = index.render(lists=lists, name=name, title=name)
 soup = bs(rendered)
 for item in seotags:
     soup.head.append(bs(item))
+
+for img_tag in soup.find_all("img"):
+    img_tag_rule(img_tag)
 
 write_output(soup.renderContents().decode("utf-8"), "index.html")

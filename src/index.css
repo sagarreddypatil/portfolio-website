@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+img {
+  @apply max-w-full h-auto w-auto;
+}
+
 h1 {
   @apply text-4xl;
 }
