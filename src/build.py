@@ -5,7 +5,7 @@ from urllib.parse import urljoin
 
 import mistune
 import frontmatter
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, element
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 first_name = "Sagar"
@@ -178,9 +178,11 @@ for post_folder in post_folders:
     lists[post_folder] = render_post_list(post_folder, posts)
 
 
-def img_tag_rule(img_tag):
-    img_tag["decoding"] = "async"
-    img_tag["loading"] = "lazy"
+def img_tag_rule(img_tag: element.Tag):
+    if not img_tag.has_attr("decoding"):
+        img_tag["decoding"] = "async"
+    if not img_tag.has_attr("loading"):
+        img_tag["loading"] = "lazy"
 
 
 seo_common = {
