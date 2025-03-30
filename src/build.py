@@ -151,7 +151,7 @@ def render_post(folder, post):
     for item in og:
         soup.head.append(bs(item))
 
-    return soup.renderContents().decode("utf-8")
+    return soup.encode_contents().decode("utf-8")
 
 
 def render_post_list(folder, posts):
@@ -209,4 +209,4 @@ for item in seotags:
 for img_tag in soup.find_all("img"):
     img_tag_rule(img_tag)
 
-write_output(soup.renderContents().decode("utf-8"), "index.html")
+write_output(soup.encode_contents().decode("utf-8"), "index.html")
