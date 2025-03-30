@@ -184,7 +184,7 @@ seo_common = {
     "url": url,
     "title": name,
     "description": f"{name}'s personal website",
-    "image": urljoin(url, "/assets/me-2.jpg"),
+    "image": urljoin(url, "/assets/me-small.jpg"),
 }
 
 og = og_tags(
