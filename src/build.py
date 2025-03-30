@@ -83,6 +83,9 @@ def og_tags(data: dict):
     for key, value in data.items():
         tags.append(f'<meta property="og:{key}" content="{value}">')
 
+    if "description" in data:
+        tags.append(f'<meta name="description" content="{data["description"]}">')
+
     return tags
 
 
